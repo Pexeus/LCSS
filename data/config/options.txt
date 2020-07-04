@@ -1,1 +1,1 @@
-{"menuPosition":"left","menuMode":"hidden","devTools":true,"openDirectory":false,"openCode":true}
+{"menuPosition":"left","menuMode":"normal","devTools":false,"openDirectory":false,"openCode":false}

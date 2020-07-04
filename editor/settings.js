@@ -1,4 +1,5 @@
 config = ipcRenderer.sendSync('requestConfig', '')
+const { shell } = require('electron')
 
 //settings ein/ausblenden
 function toggleSettings() {
@@ -269,6 +270,20 @@ function showSandboxTemplate() {
             console.log(err);
         }
     });
+}
+
+function openLink() {
+    if (event.target.tagName != "div") {
+        url = event.target.parentElement.id
+    }
+    else {
+        url = event.target.id
+    }
+
+    console.log(url)
+
+
+    shell.openExternal(url)
 }
 
 //Startup calls
