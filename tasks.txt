@@ -1,0 +1,19 @@
+ - Menu rebuild
+    - Resizable
+    - Width usw.
+
+ - Menu header mit Reload, Save, suechi, vlt meh
+ - Files im header ufliste [ DONE ]
+ - es werde nur die css Files glade wo im preview azeigt werde [ DONE ]
+
+ - Neui properties erstelle
+ - Neui Targets erstelle
+ - droptdowns optimiere
+  -> https://stackoverflow.com/questions/18309059/drop-down-menu-text-field-in-one
+
+  - Menu fokus per onclick ändere
+   -> ganzes HTML objekt und parents schicke anstatt nur id/class
+
+
+credits wege icons:
+   <div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>
