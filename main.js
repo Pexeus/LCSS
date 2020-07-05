@@ -8,8 +8,10 @@ function createSetup() {
         width: 280,
         height: 350,
         frame: false,
+        resizable: false,
         transparent: true,
         webPreferences: {
+            enableRemoteModule: true,
             nodeIntegration : true
         }
     })
@@ -32,7 +34,8 @@ function createEditor() {
         transparent: true,
         webPreferences: {
             nodeIntegration: true,
-            webviewTag: true
+            webviewTag: true,
+            enableRemoteModule: true
         }
     })
 

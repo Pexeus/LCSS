@@ -16,4 +16,4 @@ function clearDir(directory) {
     });
 }
 
-clearDir("./data/live")
+clearDir(remote.app.getAppPath() + "/data/live")

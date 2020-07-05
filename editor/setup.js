@@ -1,7 +1,7 @@
 const rimraf = require('rimraf');
 
 config = ipcRenderer.sendSync('requestConfig', '')
-liveDir = "../data/live"
+liveDir = appPath + "/data/live"
 
 //
 var path = require('path')
@@ -42,7 +42,15 @@ function insertQAButton(file) {
     }
 
     btn.onclick = function() {
-        url = config.url + event.target.innerHTML
+        if (config.url.includes(".html")) {
+
+            console.log(config.url.replace(/^.*[\\\/]/, ''))
+
+            file = config.url.replace(/^.*[\\\/]/, '')
+            url = config.url.replace(file, "")
+        }
+        url = url + event.target.innerHTML
+
         newConf = {url: url, directory: config.directory}
         console.log(newConf)
         setURL(newConf)
@@ -69,7 +77,7 @@ function QASetActive(btn) {
 
 //Projektverzeichnis im file expolorer öffnen
 function openWorkspace(config) {
-    options = JSON.parse(fs.readFileSync("./data/config/options.txt", "utf-8"))
+    options = JSON.parse(fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"))
 
     if (options.openDirectory == true) {
         openExplorer(config.directory, err => {
@@ -82,7 +90,7 @@ function openWorkspace(config) {
 
 //vscode öffnen
 function openCode(config) {
-    options = JSON.parse(fs.readFileSync("./data/config/options.txt", "utf-8"))
+    options = JSON.parse(fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"))
 
     if (options.openCode == true) {
         executeCommand("code " + config.directory)

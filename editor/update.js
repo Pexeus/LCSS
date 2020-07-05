@@ -1,10 +1,14 @@
 const { ipcRenderer } = require('electron')
 const ncp = require('ncp').ncp
 var path = require('path')
-const chokidar = require('chokidar');
+const chokidar = require('chokidar')
 const fs  = require("fs")
+const remote = require('electron').remote
 
 config = ipcRenderer.sendSync('requestConfig', '')
+
+//pfad der recourcen
+appPath = remote.app.getAppPath()
 
 
 //bei änderung menu rebuilden
@@ -13,7 +17,7 @@ fs.watch(config.directory, (eventType, file) => {
     getObject(file)
 
     if (path.extname(file) == ".css") {
-        live = "./data/live/" + file
+        live = appPath + "/data/live/" + file
         file = config.directory + file
 
         if (fs.existsSync(live)) {
@@ -47,7 +51,7 @@ function fullScan(config) {
 }
 
 function saveChanges() {
-    source = "./data/live/"
+    source = appPath + "/data/live/"
     target = config.directory
 
     console.log("Saving...")
@@ -64,7 +68,7 @@ function saveChanges() {
 
 function moveLive(file) {
     if (path.extname(file) == ".css") {
-        live = "./data/live/" + file
+        live = appPath + "/data/live/" + file
         file = config.directory + file
 
         if (fs.existsSync(live)) {
@@ -90,3 +94,11 @@ function updateEditor(config) {
 setTimeout(function() {
     fullScan(config)
 }, 500)
+
+//mit ctrl + s speichern
+document.onkeydown = function(e) {
+    if (e.ctrlKey && e.keyCode === 83) {
+        saveChanges()
+        return false;
+    }
+};

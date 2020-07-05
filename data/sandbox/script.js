@@ -14,7 +14,7 @@ function gen(name) {
     container.appendChild(box)
 }
 
-names = ["babum", "liam", "libam", "kabal","babu"]
+names = ["dolor", "sadipscing", "tempor", "sed","babub", "dolor", "sadipscing", "tempor", "sed","babub"]
 
 names.forEach(name => {
     gen(name)

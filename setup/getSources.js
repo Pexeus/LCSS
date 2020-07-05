@@ -14,22 +14,29 @@ function validateInput() {
     url = document.getElementById("urlnput").value
     files = document.getElementById("direcoryInput").files
 
-    if (files != undefined && url != undefined) {
-        path = files[0].path.replace(files[0].name, "")
+    if (files.length > 0) {
+        dir = files[0].path.replace(files[0].name, "")
 
-        if (url == "" || null) {
-            url = path
+        if (url != "") {
+            url = url.replace(/ /g, "%20")
+            console.log("Path: " + dir + " | URL: " + url)
+
+            saveProject()
+            createEditor(dir, url)
+        }
+        else {
+            url = 'file:///' + files[0].path
+
+            url = url.replace(/ /g, "%20")
+
+            addList(dir, url)
+            createEditor(dir, url)
         }
 
-        console.log(files)
-
-        console.log("Path: " + path + " | URL: " + url)
-
-        saveProject()
-        createEditor(path, url)
+        
     }
     else {
-        showError("Set Path and URL")
+        showError("Set a Project Directory")
     }
 }
 
@@ -58,7 +65,7 @@ function showError(msg) {
 }
 
 function createEditor(dir, url) {
-    clearDir("./data/live/")
+    clearDir(remote.app.getAppPath() + "/data/live/")
 
     editorConfig = {url: url, directory: dir}
     console.log(editorConfig)

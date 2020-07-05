@@ -1,11 +1,10 @@
-const remote = require('electron').remote;
-
-
 //css property lists für dropdowns
 CSS_display = "inline block flex grid inline-block inherit"
 CSS_units = "px vh pt % em in mm cm pt pc"
 CSS_colors = "blue red black white yellow"
 CSS_align = "center left right top bottom"
+
+oldbox = false
 
 
 
@@ -291,9 +290,38 @@ function createBox(target, container) {
     container.appendChild(box)
     box.appendChild(title)
 
+    title.addEventListener("click", function (e) {
+        toggleBox(event.target.parentElement)
+    });
+
 
     return box
 }
+
+//box "öffnen"
+function toggleBox(box) {
+    if (oldbox != box) {
+        box = event.target.parentElement
+        box.style.minWidth = "80%"
+
+        if (oldbox != false) {
+            oldbox.style.minWidth = "0px"
+        }
+
+        setTimeout(function () {
+            box.scrollIntoView()
+        }, 200)
+
+        oldbox = box
+    }
+}
+
+function closeBoxes() {
+    console.log(event.target)
+    if (event.target.className == "fileContainer") {
+        oldbox.style.minWidth = "0px"
+    }
+} 
 
 //JS element erstellen (core, sau wichtig)
 function createElement(type, id) {
@@ -327,16 +355,16 @@ function createElement(type, id) {
         console.log(menu.style.width)
 
         if (menu.style.width == "") {
-            menu.style.width = "300px"
-            preview.style.width = "calc(100% - 300px)"
+            menu.style.width = "330px"
+            preview.style.width = "calc(100% - 330px)"
             currentOptions.menuMode = "normal"
         }
         else if (menu.style.width == "0px") {
-            menu.style.width = "300px"
-            preview.style.width = "calc(100% - 300px)"
+            menu.style.width = "330px"
+            preview.style.width = "calc(100% - 330px)"
             currentOptions.menuMode = "normal"
         }
-        else if (menu.style.width == "300px") {
+        else if (menu.style.width == "330px") {
             menu.style.width = "50%"
             preview.style.width = "50%"
             currentOptions.menuMode = "large"
@@ -347,7 +375,7 @@ function createElement(type, id) {
             currentOptions.menuMode = "hidden"
         }
 
-        console.log(currentOptions)
+        console.log(menu.style.width)
         updateOptions(currentOptions)
     }
 //----------WINDOW SHIT----------
@@ -372,4 +400,5 @@ function rgbToHex(rgb) {
     }
     return hex;
 }
+
 //-----------geklauter code-----------

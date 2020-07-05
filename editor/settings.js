@@ -31,7 +31,7 @@ function addFileStatus(file, type) {
     container = createElement("div", "Status" + file)
 
     icon = createElement("img", "fileIcon")
-    icon.src = "../data/img/css.png"
+    icon.src = appPath + "/data/img/css.png"
 
     fileName = createElement("p", "fileName")
     fileName.innerHTML = file
@@ -70,11 +70,11 @@ function setProjectStatus() {
 //standard optionen-objekt erstellen
 function defaultOptions() {
     options = {
-        menuPosition: "right",
+        menuPosition: "left",
         menuMode: "default",
         devTools: false,
         openDirectory: false,
-        openCode: true
+        openCode: false
     }
 
     updateOptions(options)
@@ -82,7 +82,7 @@ function defaultOptions() {
 
 //optionen permanent speichern
 function updateOptions(options) {
-    fs.writeFileSync("./data/config/options.txt", JSON.stringify(options))
+    fs.writeFileSync(appPath + "/data/config/options.txt", JSON.stringify(options))
 
     loadOptions()
     executeOptions()
@@ -90,7 +90,7 @@ function updateOptions(options) {
 
 //optionen abrufen
 function getOptions() {
-    string = fs.readFileSync("./data/config/options.txt", "utf-8")
+    string = fs.readFileSync(appPath + "/data/config/options.txt", "utf-8")
 
     return JSON.parse(string)
 }
@@ -211,8 +211,8 @@ function executeOptions() {
 
     //menu grösse
     if (currentOptions.menuMode == "normal") {
-        menu.style.width = "300px"
-        preview.style.width = "calc(100% - 300px)"
+        menu.style.width = "330px"
+        preview.style.width = "calc(100% - 330px)"
     }
     if (currentOptions.menuMode == "large") {
         menu.style.width = "50%"
@@ -233,9 +233,9 @@ function executeOptions() {
 
 //sandbox auf vorlage zurücksetzen
 function resetSandbox() {
-    clearDir("./data/sandbox")
+    clearDir(appPath + "/data/sandbox")
 
-    ncp("./data/sandboxTemplate", "./data/sandbox", function (err) {
+    ncp(appPath + "/data/sandboxTemplate", appPath + "/data/sandbox", function (err) {
         if (err) {
         console.log(err)
         }

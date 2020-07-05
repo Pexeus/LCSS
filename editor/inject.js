@@ -2,6 +2,10 @@
 fs  = require("fs")
 const { ipcRenderer } = require('electron')
 var path = require('path')
+const remote = require('electron').remote
+
+
+appPath = remote.app.getAppPath()
 
 currentCSS = ""
 
@@ -9,7 +13,7 @@ config = ipcRenderer.sendSync('requestConfig', '')
 
 checklist = "_"
 
-liveDir = "./data/live/"
+liveDir = appPath + "/data/live/"
 css = ""
 
 scrollbarFix = "\n\n::-webkit-scrollbar {display:none;}\n\n"

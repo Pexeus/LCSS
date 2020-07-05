@@ -30,7 +30,7 @@ data = []
 extracted = {}
 
 //Verzeichnis zum zwischenspeichern der daten
-liveDir = "./data/live"
+liveDir = appPath + "/data/live"
 
 
 console.log("Loading menu with URL: " + config.url + " Direcory: " + config.directory)
@@ -41,9 +41,17 @@ function setFocus(target) {
     if (block != undefined) {
         //console.log("scrolling to: ")
         //console.log(block)
-        block.scrollIntoView()
+        block.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+        })
     }
 }
+
+
+
+
 
 function getBlock(target) {
     files = document.getElementById("editors").childNodes

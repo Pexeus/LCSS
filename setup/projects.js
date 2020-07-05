@@ -19,6 +19,8 @@ function addList(path, url) {
     list = getList()
     project = {path: path, url: url}
 
+    console.log(project)
+
     console.log(JSON.stringify(list))
     console.log(project.url)
 
@@ -34,12 +36,12 @@ function addList(path, url) {
 
 //projektliste aktualisieren
 function updateList(list) {
-    fs.writeFileSync("./data/config/projects.txt", JSON.stringify(list))
+    fs.writeFileSync(remote.app.getAppPath() + "/data/config/projects.txt", JSON.stringify(list))
 }
 
 //projektliste abrufen
 function getList() {
-    list = fs.readFileSync("./data/config/projects.txt", "utf-8")
+    list = fs.readFileSync(remote.app.getAppPath() + "/data/config/projects.txt", "utf-8")
 
     if (list == "") {
         //toggleSetup() wegen sandbox

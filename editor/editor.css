@@ -117,7 +117,7 @@ body {
 }
 
 #menu {
-    width: 300px;
+    width: 330px;
     height: calc(100vh - 75px);
     overflow: auto;
     position: fixed;
@@ -182,7 +182,7 @@ body {
     width: 100%;
     height: calc(100% - 40px);
     overflow: scroll;
-    text-align: center;
+    text-align: left;
     scroll-behavior: smooth;
     background-color: #F9F9FA;
     vertical-align: top;
@@ -190,13 +190,16 @@ body {
 
 .scopeContainer {
     background-color: white;
-	width: 280px;
-	max-width: 90%;
+    width: 320px;
 	display: inline-block;
-	box-shadow: 0px 3px 5px 0px rgba(158,158,158,0.5);
-	margin:   10px;
-    border-radius:   2.5px;
-    padding: 4px;
+    vertical-align: top;
+    box-shadow: 0px 0px 2px gray;
+    overflow: hidden;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: .2s ease-in-out;
+    margin: 2px;
+    border-radius: 2.5px;
 }
 
 .scopeContainer h3 {
@@ -210,14 +213,16 @@ body {
 
 .box {
     background-color: white;
-	width: 250px;
-	max-width: 90%;
+    width: 315px;
 	display: inline-block;
-	box-shadow: 0px 0px 5px 0px rgba(158,158,158,0.5);
-	margin:   10px;
-    border-radius:   2.5px;
-    padding: 4px;
     vertical-align: top;
+    box-shadow: 0px 0px 2px gray;
+    overflow: hidden;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: .2s ease-in-out;
+    margin: 2px;
+    border-radius: 2.5px;
 }
 
 #slider {
@@ -248,6 +253,7 @@ body {
     margin-left: 10px;
     border-left: 3px solid rgb(94, 154, 209);
     padding-left: 2%;
+    cursor: pointer;
 }
 
 .box p {
@@ -271,6 +277,7 @@ body {
     border-top-right-radius: 2.5px;
     border-bottom-right-radius: 2.5px;
     outline: none;
+    cursor: pointer;
 }
 
 #dropdownOption {
@@ -338,7 +345,7 @@ body {
 
 #slider {
     border-radius: 5px;
-    width: 65%;
+    width: calc(100% - 80px);
     display: inline-block;
 }
 
