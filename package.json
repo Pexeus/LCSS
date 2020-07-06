@@ -6,8 +6,9 @@
     "scripts": {
         "start": "electron main.js",
         "build": "electron-packager . ../LCSS",
-        "prettier": "npx prettier --write .",
-        "lint:js": "eslint --ext .js"
+        "prettier": "./node_modules/.bin/prettier --write .",
+        "lint:js": "./node_modules/.bin/eslint .",
+        "lint:fix": "./node_modules/.bin/eslint . --fix"
     },
     "author": "verion",
     "license": "ISC",
@@ -23,6 +24,7 @@
         "cz-conventional-changelog": "^3.2.0",
         "electron-packager": "^15.0.0",
         "electron-wix-msi": "^2.2.0",
+        "eslint": "^7.4.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-config-prettier-standard": "^3.0.1",
         "eslint-config-standard": "^14.1.1",
@@ -42,7 +44,7 @@
         }
     },
     "lint-staged": {
-        "*.{js,css,md}": ["npm run prettier", "npm run lint:js"]
+        "*.{js,css}": "npm run prettier"
     },
     "config": {
         "commitizen": {

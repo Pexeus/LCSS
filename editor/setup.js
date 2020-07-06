@@ -25,7 +25,7 @@ function devTools() {
 
 function quickAccess(file) {
     if (path.extname(file) == ".html" || path.extname(file) == ".php") {
-        //console.log("Adding to quickbar: " + file)
+        // console.log("Adding to quickbar: " + file)
 
         container = document.getElementById("filesList");
         button = insertQAButton(file);
@@ -34,7 +34,7 @@ function quickAccess(file) {
     }
 }
 
-//Buttons für den wechsel zwischen den files (im head)
+// Buttons für den wechsel zwischen den files (im head)
 function insertQAButton(file) {
     btn = document.createElement("button");
     btn.innerHTML = file;
@@ -75,7 +75,7 @@ function QASetActive(btn) {
     btn.classList.add("activeButton");
 }
 
-//Projektverzeichnis im file expolorer öffnen
+// Projektverzeichnis im file expolorer öffnen
 function openWorkspace(config) {
     options = JSON.parse(
         fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
@@ -90,7 +90,7 @@ function openWorkspace(config) {
     }
 }
 
-//vscode öffnen
+// vscode öffnen
 function openCode(config) {
     options = JSON.parse(
         fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
@@ -101,7 +101,7 @@ function openCode(config) {
     }
 }
 
-//command ausführen
+// command ausführen
 function executeCommand(command) {
     exec(command, (error, stdout, stderr) => {
         if (error) {

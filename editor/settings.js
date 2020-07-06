@@ -1,7 +1,7 @@
 config = ipcRenderer.sendSync("requestConfig", "");
 const { shell } = require("electron");
 
-//settings ein/ausblenden
+// settings ein/ausblenden
 function toggleSettings() {
     win = document.getElementById("windowManager");
 
@@ -19,7 +19,7 @@ function toggleSettings() {
     }
 }
 
-//files in settings mit status anzeigen
+// files in settings mit status anzeigen
 function addFileStatus(file, type) {
     if (document.getElementById("Status" + file) != undefined) {
         console.log("removing: " + file);
@@ -50,12 +50,12 @@ function addFileStatus(file, type) {
     target.appendChild(container);
 }
 
-//files container leeren
+// files container leeren
 function resetFileStatus() {
     document.getElementById("fileStatusContainer").innerHTML = "";
 }
 
-//projekt url/path anzeigen
+// projekt url/path anzeigen
 function setProjectStatus() {
     container = document.getElementById("projectStatusContainer");
 
@@ -69,7 +69,7 @@ function setProjectStatus() {
     container.appendChild(dir);
 }
 
-//standard optionen-objekt erstellen
+// standard optionen-objekt erstellen
 function defaultOptions() {
     options = {
         menuPosition: "left",
@@ -82,7 +82,7 @@ function defaultOptions() {
     updateOptions(options);
 }
 
-//optionen permanent speichern
+// optionen permanent speichern
 function updateOptions(options) {
     fs.writeFileSync(
         appPath + "/data/config/options.txt",
@@ -93,18 +93,18 @@ function updateOptions(options) {
     executeOptions();
 }
 
-//optionen abrufen
+// optionen abrufen
 function getOptions() {
     string = fs.readFileSync(appPath + "/data/config/options.txt", "utf-8");
 
     return JSON.parse(string);
 }
 
-//optionen mit den daten aus dem UI updaten
+// optionen mit den daten aus dem UI updaten
 function setOptions() {
     currentOptions = getOptions();
 
-    //editor stuff
+    // editor stuff
     currentOptions.menuPosition = document
         .getElementsByClassName("config_ePos")[0]
         .value.toLowerCase();
@@ -112,7 +112,7 @@ function setOptions() {
         .getElementsByClassName("config_eSize")[0]
         .value.toLowerCase();
 
-    //devTools anzeigen ja/ne
+    // devTools anzeigen ja/ne
     if (
         document.getElementsByClassName("config_pDevTools")[0].value ==
         "Show per Default"
@@ -122,14 +122,14 @@ function setOptions() {
         currentOptions.devTools = false;
     }
 
-    //explorer öffnen ja/ne
+    // explorer öffnen ja/ne
     if (document.getElementsByClassName("config_sExplorer")[0].value == "Yes") {
         currentOptions.openDirectory = true;
     } else {
         currentOptions.openDirectory = false;
     }
 
-    //code öffnen ja/ne
+    // code öffnen ja/ne
     if (document.getElementsByClassName("config_sCode")[0].value == "Yes") {
         currentOptions.openCode = true;
     } else {
@@ -141,7 +141,7 @@ function setOptions() {
     updateOptions(currentOptions);
 }
 
-//UI mit abgespiecherten optionen abgleichen
+// UI mit abgespiecherten optionen abgleichen
 function loadOptions() {
     currentOptions = getOptions();
 
@@ -151,14 +151,14 @@ function loadOptions() {
     sExplorer = document.getElementsByClassName("config_sExplorer")[0];
     sCode = document.getElementsByClassName("config_sCode")[0];
 
-    //Menu position
+    // Menu position
     if (currentOptions.menuPosition == "left") {
         ePos.options[1].selected = "selected";
     } else {
         ePos.options[0].selected = "selected";
     }
 
-    //Menu mode
+    // Menu mode
     for (i = 0; i < eSize.options.length; i++) {
         if (
             eSize.options[i].innerHTML.toLowerCase() == currentOptions.menuMode
@@ -167,22 +167,22 @@ function loadOptions() {
         }
     }
 
-    //devtools
+    // devtools
     if (currentOptions.devTools == false) {
         pDevTools.options[1].selected = "selected";
     } else {
         pDevTools.options[0].selected = "selected";
     }
 
-    //explorer
+    // explorer
     if (currentOptions.openDirectory == false) {
         sExplorer.options[1].selected = "selected";
     } else {
         pDevTools.options[0].selected = "selected";
     }
 
-    //code
-    //explorer
+    // code
+    // explorer
     if (currentOptions.openCode == false) {
         sCode.options[1].selected = "selected";
     } else {
@@ -196,26 +196,26 @@ function executeOptions() {
     editor = document.getElementById("menu");
     preview = document.getElementById("preview");
 
-    //menu position
+    // menu position
     if (currentOptions.menuPosition == "left") {
-        //neu
+        // neu
         preview.style.right = 0;
         editor.style.left = 0;
 
-        //old
+        // old
         editor.style.right = "";
         preview.style.left = "";
     } else {
-        //neu
+        // neu
         editor.style.right = 0;
         preview.style.left = 0;
 
-        //old
+        // old
         preview.style.right = "";
         editor.style.left = "";
     }
 
-    //menu grösse
+    // menu grösse
     if (currentOptions.menuMode == "normal") {
         menu.style.width = "330px";
         preview.style.width = "calc(100% - 330px)";
@@ -229,7 +229,7 @@ function executeOptions() {
         preview.style.width = "100%";
     }
 
-    //devtools
+    // devtools
     if (currentOptions.devTools == true) {
         setTimeout(function () {
             devTools();
@@ -237,7 +237,7 @@ function executeOptions() {
     }
 }
 
-//sandbox auf vorlage zurücksetzen
+// sandbox auf vorlage zurücksetzen
 function resetSandbox() {
     clearDir(appPath + "/data/sandbox");
 
@@ -255,7 +255,7 @@ function resetSandbox() {
     location.reload();
 }
 
-//verzeichnis leeren
+// verzeichnis leeren
 function clearDir(directory) {
     fs.readdir(directory, (err, files) => {
         if (err) throw err;
@@ -269,7 +269,7 @@ function clearDir(directory) {
     });
 }
 
-//sandbox template öffnen
+// sandbox template öffnen
 function showSandboxTemplate() {
     template = path.join(__dirname, "..", "\\data\\sandboxTemplate");
 
@@ -292,7 +292,7 @@ function openLink() {
     shell.openExternal(url);
 }
 
-//Startup calls
+// Startup calls
 loadOptions();
 executeOptions();
 setProjectStatus();

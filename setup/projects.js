@@ -13,7 +13,7 @@ function saveProject() {
     }
 }
 
-//Projekt zur projektliste hinzufügen
+// Projekt zur projektliste hinzufügen
 function addList(path, url) {
     list = getList();
     project = { path: path, url: url };
@@ -32,7 +32,7 @@ function addList(path, url) {
     updateList(list);
 }
 
-//projektliste aktualisieren
+// projektliste aktualisieren
 function updateList(list) {
     fs.writeFileSync(
         remote.app.getAppPath() + "/data/config/projects.txt",
@@ -40,7 +40,7 @@ function updateList(list) {
     );
 }
 
-//projektliste abrufen
+// projektliste abrufen
 function getList() {
     list = fs.readFileSync(
         remote.app.getAppPath() + "/data/config/projects.txt",
@@ -48,7 +48,7 @@ function getList() {
     );
 
     if (list == "") {
-        //toggleSetup() wegen sandbox
+        // toggleSetup() wegen sandbox
         list = [];
     } else {
         list = JSON.parse(list);
@@ -61,7 +61,7 @@ function getList() {
     return list;
 }
 
-//projekte anzeigen
+// projekte anzeigen
 function displayProjects(projects) {
     container = document.getElementById("projects");
 
@@ -109,7 +109,7 @@ function projectBox(config) {
         createEditor(pPath, pURL);
     });
 
-    //sandbox hervorheben
+    // sandbox hervorheben
     console.log(config.path);
     if (config.path.includes("sandbox")) {
     }

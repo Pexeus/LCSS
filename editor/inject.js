@@ -1,4 +1,4 @@
-//imports
+// imports
 fs = require("fs");
 const { ipcRenderer } = require("electron");
 var path = require("path");
@@ -21,12 +21,12 @@ lastUpdate = "";
 
 cooldownStatus = false;
 
-//livedir watch
+// livedir watch
 fs.watch(liveDir, (eventType, filename) => {
     getFiles();
 });
 
-//user workspace watch
+// user workspace watch
 fs.watch(config.directory, (eventType, file) => {
     if (path.extname(file) !== ".css") {
         console.log("Change at " + file + " Reloading...");
@@ -34,7 +34,7 @@ fs.watch(config.directory, (eventType, file) => {
     }
 });
 
-//status von preview aktualisieren und an main senden
+// status von preview aktualisieren und an main senden
 function updateStatus(value) {
     if (value != lastUpdate) {
         ipcRenderer.sendSync("previewStatus", value);
@@ -42,7 +42,7 @@ function updateStatus(value) {
     }
 }
 
-//alle files aus /live abrufen
+// alle files aus /live abrufen
 function getFiles() {
     fs.readdir(liveDir, (err, files) => {
         css = "";
@@ -57,7 +57,7 @@ function getFiles() {
     });
 }
 
-//alle css links die raus müssen entfernen
+// alle css links die raus müssen entfernen
 function removeLinks(sources) {
     links = document.querySelectorAll("link");
     imports = getImports();
@@ -90,7 +90,7 @@ function removeLinks(sources) {
     updateStatus(checklist);
 }
 
-//@import entfernen oder so
+// @import entfernen oder so
 function extractCSSImport(css, file) {
     string = String(css);
     lines = string.split("\n");
@@ -112,18 +112,18 @@ function getImports() {
     return inlineTags;
 }
 
-//element entfernen
+// element entfernen
 function remove(element) {
     element.parentNode.removeChild(element);
 }
 
-//string für inline css erstellen
+// string für inline css erstellen
 function createCSS(file) {
     data = fs.readFileSync(liveDir + file, "utf8");
     css += data + scrollbarFix;
 }
 
-//CSS aktualisieren
+// CSS aktualisieren
 function updateCSS() {
     if (css != "" && css != currentCSS) {
         console.log("pushing: \n" + css);
@@ -169,7 +169,7 @@ function coolDown() {
     }, 100);
 }
 
-//ziel an den main prozess schicken
+// ziel an den main prozess schicken
 function sendElement(element) {
     dispatch = targetElement(element);
 
@@ -178,7 +178,7 @@ function sendElement(element) {
     ipcRenderer.sendSync("requestProprity", dispatch);
 }
 
-//möglichkeit finden die property zu targetten (id usw) [-->BRUH CLASS GITS OH<--]
+// möglichkeit finden die property zu targetten (id usw) [-->BRUH CLASS GITS OH<--]
 function targetElement(e) {
     retry = true;
     tries = 0;
@@ -215,7 +215,7 @@ function targetElement(e) {
     return target.slice(0, target.length - 1);
 }
 
-//experimentelle funktion
+// experimentelle funktion
 function targetElement2(clicked) {
     dataset = currentCSS;
 

@@ -1,10 +1,10 @@
-//CSS objekt zu string machen (mit formatierung)
+// CSS objekt zu string machen (mit formatierung)
 
 tabsCount = 0;
 
-//css objekt zu string parsen
+// css objekt zu string parsen
 function parseCSS(object, extractedData) {
-    //console.log(object)
+    // console.log(object)
     string = "";
 
     string += extractedData;
@@ -15,11 +15,11 @@ function parseCSS(object, extractedData) {
         string += insertTarget(target, object[target], 0);
     });
 
-    //console.log(string)
+    // console.log(string)
     return string;
 }
 
-//targets einfügen (z.b. #box)
+// targets einfügen (z.b. #box)
 function insertTarget(target, block, tabsCount) {
     string = "";
 
@@ -34,9 +34,9 @@ function insertTarget(target, block, tabsCount) {
     return string;
 }
 
-//eigenschaften einfügen (springt zu target bei objekt)
+// eigenschaften einfügen (springt zu target bei objekt)
 function insertProperties(dataset, tabsCount) {
-    //console.log(dataset)
+    // console.log(dataset)
     properties = Object.keys(dataset);
     string = "";
 
@@ -56,7 +56,7 @@ function insertProperties(dataset, tabsCount) {
     return string;
 }
 
-//tabulatoren verwalten
+// tabulatoren verwalten
 function setTabulators(amount) {
     returnValue = "";
     for (i = 0; i < amount; i++) {
