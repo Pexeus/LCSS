@@ -1,4 +1,4 @@
-fs = require("fs");
+const fs = require("fs");
 pathModule = require("path");
 
 console.log("clearing up...");

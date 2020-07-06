@@ -1,4 +1,7 @@
 {
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
     "extends": ["prettier", "prettier-standard", "eslint-config-prettier"],
     "rules": {
         "prettier/prettier": 0
