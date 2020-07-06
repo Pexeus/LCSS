@@ -125,6 +125,8 @@ function toggleSetup() {
 
         document.getElementById("showSelection").style.display = "none";
         document.getElementById("projects").style.display = "none";
+        document.getElementById("titleWindow").innerHTML =
+            "LCSS - Create new project";
         document.getElementById("modeHeader").innerHTML = "New Project";
     } else {
         document.getElementById("selection").style.display = "none";
@@ -133,6 +135,7 @@ function toggleSetup() {
         document.getElementById("showSelection").style.display = "inline-block";
         document.getElementById("projects").style.display = "inline-block";
         document.getElementById("showProjects").style.display = "none";
+        document.getElementById("titleWindow").innerHTML = "LCSS";
         document.getElementById("modeHeader").innerHTML = "Open Project";
     }
 }
