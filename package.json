@@ -23,6 +23,7 @@
         "electron-packager": "^15.0.0",
         "electron-wix-msi": "^2.2.0",
         "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-standard": "^4.0.1",
         "husky": "^4.2.5",
         "lint-staged": "^10.2.11",
         "prettier": "2.0.5"
