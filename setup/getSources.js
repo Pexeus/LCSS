@@ -39,14 +39,14 @@ function validateInput() {
 function determineStart(files) {
     value = "";
 
-    for (i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
         if (files[i].name.includes("index")) {
             value = files[i].name;
         }
     }
 
     if (value == "") {
-        for (i = 0; i < files.length; i++) {
+        for (let i = 0; i < files.length; i++) {
             if (
                 files[i].name.includes(".php") ||
                 files[i].name.includes(".html")

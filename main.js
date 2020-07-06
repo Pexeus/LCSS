@@ -3,7 +3,7 @@ const { ipcMain, dialog, app, BrowserWindow } = require("electron");
 editorConfig = { directory: "", url: "" };
 
 function createSetup() {
-    //fenster definieren
+    // fenster definieren
     setupWindow = new BrowserWindow({
         width: 280,
         height: 350,
@@ -16,11 +16,11 @@ function createSetup() {
         },
     });
 
-    //html laden
+    // html laden
     setupWindow.loadFile("./setup/index.html");
 
-    //devtools
-    setupWindow.webContents.openDevTools({mode:'undocked'})
+    // devtools
+    setupWindow.webContents.openDevTools({ mode: "undocked" });
 }
 
 function createEditor() {
@@ -45,7 +45,7 @@ function createEditor() {
 
     setupWindow.close();
 
-    //status vom preview empfangen und an editor senden
+    // status vom preview empfangen und an editor senden
     ipcMain.on("previewStatus", (event, filesList) => {
         console.log("Current Files:");
         console.log(filesList);
@@ -54,7 +54,7 @@ function createEditor() {
         editorWindow.webContents.send("currentlyLoaded", filesList);
     });
 
-    //ziel von angeklicktem element vom preview empfangen und an das menu senden
+    // ziel von angeklicktem element vom preview empfangen und an das menu senden
     ipcMain.on("requestProprity", (event, target) => {
         console.log("Recieved Target: ");
         console.log(target);
@@ -67,12 +67,12 @@ function createEditor() {
 app.whenReady().then(createSetup);
 app.allowRendererProcessReuse = false;
 
-//konfiguration vom editor zurücksenden
+// konfiguration vom editor zurücksenden
 ipcMain.on("requestConfig", (event, arg) => {
     event.returnValue = editorConfig;
 });
 
-//editor erstellen
+// editor erstellen
 ipcMain.on("createEditor", (event, data) => {
     event.returnValue = "";
     editorConfig = data;

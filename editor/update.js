@@ -7,10 +7,10 @@ const remote = require("electron").remote;
 
 config = ipcRenderer.sendSync("requestConfig", "");
 
-//pfad der recourcen
+// pfad der recourcen
 appPath = remote.app.getAppPath();
 
-//bei änderung menu rebuilden
+// bei änderung menu rebuilden
 fs.watch(config.directory, (eventType, file) => {
     console.log("Change in workspace: " + file);
     getObject(file);
@@ -35,7 +35,7 @@ fs.watch(config.directory, (eventType, file) => {
     }
 });
 
-//alle files scannen und in /live kopieren
+// alle files scannen und in /live kopieren
 function fullScan(config) {
     files = fs.readdirSync(config.directory);
 
@@ -84,12 +84,12 @@ function updateEditor(config) {
     ipcRenderer.sendSync("createEditor", config);
 }
 
-//beim start ein update durchführen
+// beim start ein update durchführen
 setTimeout(function () {
     fullScan(config);
 }, 500);
 
-//mit ctrl + s speichern
+// mit ctrl + s speichern
 document.onkeydown = function (e) {
     if (e.ctrlKey && e.keyCode === 83) {
         saveChanges();

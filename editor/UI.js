@@ -1,4 +1,4 @@
-//css property lists für dropdowns
+// css property lists für dropdowns
 CSS_display = "inline block flex grid inline-block inherit";
 CSS_units = "px vh pt % em in mm cm pt pc";
 CSS_colors = "blue red black white yellow";
@@ -13,7 +13,7 @@ function createInterface(container, property, values) {
     }
 }
 
-//scope in den files adden
+// scope in den files adden
 function createScope(scope) {
     scopeContainer = createElement("div", scope);
     scopeTitle = createElement("h3", "scopeHead");
@@ -65,7 +65,7 @@ function dropdown(property, userValue) {
     dropdownContainer = createElement("div", "dropdownBox");
     selection = createElement("select", "dropdown");
 
-    //schauen in welcher liste der wert vorkommt
+    // schauen in welcher liste der wert vorkommt
     if (CSS_display.includes(userValue)) {
         options = CSS_display.split(" ");
     } else if (CSS_colors.includes(userValue)) {
@@ -74,7 +74,7 @@ function dropdown(property, userValue) {
         options = CSS_align.split(" ");
     }
 
-    //dropdown optionen einfügen
+    // dropdown optionen einfügen
     options.forEach((option) => {
         container = createElement("option", "dropdownOption");
         container.text = option;
@@ -87,7 +87,7 @@ function dropdown(property, userValue) {
     });
 
     selection.oninput = function () {
-        //console.log(event.target.parentNode, property)
+        // console.log(event.target.parentNode, property)
         createDataset(event.target, property);
     };
 
@@ -132,10 +132,10 @@ function splitValues(string) {
         colorHEX = string.substring(hexCheck, string.length);
         string = string.replace(colorHEX, "");
     } else if (rgbCheck > -1) {
-        //console.log("0: " + string)
+        // console.log("0: " + string)
         colorRGB = string.substring(rgbCheck, string.length);
         string = string.replace(colorRGB, "");
-        //console.log("1: " + string)
+        // console.log("1: " + string)
     }
 
     values = string.split(" ");
@@ -147,7 +147,7 @@ function splitValues(string) {
     if (colorHEX !== "") {
         values[values.length - 1] = colorHEX;
     }
-    //console.log(values)
+    // console.log(values)
     return values;
 }
 
@@ -201,7 +201,7 @@ function slider(property, value, unit) {
     sliderElement.max = range.max;
     sliderElement.value = value;
 
-    //slider wert in das textfeld
+    // slider wert in das textfeld
     sliderElement.addEventListener("input", () => {
         container = event.target.parentNode;
         display = container.querySelector("#valueInput");
@@ -230,7 +230,7 @@ function unitInput(unit) {
 
         selection.add(container, null);
 
-        //console.log(unit + " / " + option)
+        // console.log(unit + " / " + option)
 
         if (option == unit) {
             container.selected = true;
@@ -273,7 +273,7 @@ function getRange(value, unit) {
     return range;
 }
 
-//menu panel erstellen (core, sau wichtig)
+// menu panel erstellen (core, sau wichtig)
 function createBox(target, container) {
     box = createElement("div", target);
     box.classList.add("box");
@@ -289,7 +289,7 @@ function createBox(target, container) {
     return box;
 }
 
-//box "öffnen"
+// box "öffnen"
 function toggleBox(box) {
     if (oldbox != box) {
         box = event.target.parentElement;
@@ -314,7 +314,7 @@ function closeBoxes() {
     }
 }
 
-//JS element erstellen (core, sau wichtig)
+// JS element erstellen (core, sau wichtig)
 function createElement(type, id) {
     element = document.createElement(type);
     if (id != "") {
@@ -324,7 +324,7 @@ function createElement(type, id) {
     return element;
 }
 
-//----------WINDOW SHIT----------
+// ----------WINDOW SHIT----------
 document.getElementById("min").addEventListener("click", function (e) {
     var window = remote.getCurrentWindow();
     window.minimize();
@@ -335,7 +335,7 @@ document.getElementById("close").addEventListener("click", function (e) {
     window.close();
 });
 
-//Menu ein/ausblenden
+// Menu ein/ausblenden
 function toggleMenu() {
     currentOptions = getOptions();
 
@@ -365,9 +365,9 @@ function toggleMenu() {
     console.log(menu.style.width);
     updateOptions(currentOptions);
 }
-//----------WINDOW SHIT----------
+// ----------WINDOW SHIT----------
 
-//-----------geklauter code-----------
+// -----------geklauter code-----------
 function componentFromStr(numStr, percent) {
     var num = Math.max(0, parseInt(numStr, 10));
     return percent
@@ -377,11 +377,11 @@ function componentFromStr(numStr, percent) {
 
 function rgbToHex(rgb) {
     var rgbRegex = /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/;
-    var result,
-        r,
-        g,
-        b,
-        hex = "";
+    var result;
+    var r;
+    var g;
+    var b;
+    var hex = "";
     if ((result = rgbRegex.exec(rgb))) {
         r = componentFromStr(result[1], result[2]);
         g = componentFromStr(result[3], result[4]);
@@ -392,4 +392,4 @@ function rgbToHex(rgb) {
     return hex;
 }
 
-//-----------geklauter code-----------
+// -----------geklauter code-----------
