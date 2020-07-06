@@ -19,6 +19,7 @@
         "rimraf": "^3.0.2"
     },
     "devDependencies": {
+        "cz-conventional-changelog": "^3.2.0",
         "electron-packager": "^15.0.0",
         "electron-wix-msi": "^2.2.0",
         "eslint-config-prettier": "^6.11.0",
@@ -33,5 +34,10 @@
     },
     "lint-staged": {
         "*.{js,css,md}": "npx prettier --write ."
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
