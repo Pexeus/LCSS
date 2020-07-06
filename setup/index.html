@@ -1,44 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setup</title>
-    <link href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="setup.css">
-</head>
-<body>
-    <div id="frame">
-        <div id="head">
-            <div id="windowMenu">
-                <img id="close" src="../data/img/close.png" alt="">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Setup</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="setup.css" />
+    </head>
+    <body>
+        <div id="frame">
+            <div id="head">
+                <div id="windowMenu">
+                    <img id="close" src="../data/img/close.png" alt="" />
+                </div>
+            </div>
+
+            <h1 id="modeHeader">OpenProject</h1>
+
+            <div id="selection">
+                <input type="text" id="urlnput" placeholder="URL" />
+                <br />
+                <br />
+                <input
+                    type="file"
+                    webkitdirectory
+                    class="hiddenInput"
+                    id="direcoryInput"
+                /><label for="direcoryInput" id="selectFolder">Directory</label>
+                <br />
+                <br />
+            </div>
+
+            <div id="projects"></div>
+            <button
+                onclick="toggleSetup()"
+                id="showSelection"
+                class="setupButton"
+            >
+                New Project
+            </button>
+            <div id="under">
+                <p id="errorDisplay"></p>
+                <button
+                    onclick="toggleSetup()"
+                    id="showProjects"
+                    class="setupButton"
+                >
+                    Projects
+                </button>
+                <button class="setupButton" onclick="validateInput()">
+                    Launch
+                </button>
             </div>
         </div>
-
-        <h1 id="modeHeader">OpenProject</h1>
-
-        <div id="selection">
-            <input type="text" id="urlnput" placeholder="URL">
-            <br>
-            <br>
-            <input type="file" webkitdirectory class="hiddenInput" id="direcoryInput"><label for="direcoryInput" id="selectFolder">Directory</label>
-            <br>
-            <br>
-        </div>
-
-        <div id="projects">
-
-        </div>
-        <button onclick="toggleSetup()" id="showSelection" class="setupButton">New Project</button>
-        <div id="under">
-            <p id="errorDisplay"></p>
-            <button onclick="toggleSetup()" id="showProjects" class="setupButton">Projects</button>
-            <button class="setupButton" onclick="validateInput()">Launch</button>
-        </div>
-    </div>
-    <script src="getSources.js"></script>
-    <script src="clear.js"></script>
-    <script src="projects.js"></script>
-    <script src="sandbox.js"></script>
-</body>
+        <script src="getSources.js"></script>
+        <script src="clear.js"></script>
+        <script src="projects.js"></script>
+        <script src="sandbox.js"></script>
+    </body>
 </html>

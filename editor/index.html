@@ -1,141 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="head">
-        <div id="toolbar">
-            <button onclick="saveChanges()" id="headButton">Save</button>
-            <button onclick="toggleMenu()" id="headButton">Editor</button>
-            <button onclick="devTools()" id="headButton">devTools</button>
-            <button onclick="toggleSettings()" id="headButton">Settings</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="head">
+            <div id="toolbar">
+                <button onclick="saveChanges()" id="headButton">Save</button>
+                <button onclick="toggleMenu()" id="headButton">Editor</button>
+                <button onclick="devTools()" id="headButton">devTools</button>
+                <button onclick="toggleSettings()" id="headButton">
+                    Settings
+                </button>
+            </div>
+            <div id="filesList"></div>
+            <div id="windowMenu">
+                <img id="min" src="../data/img/min.png" alt="" />
+                <img id="close" src="../data/img/close.png" alt="" />
+            </div>
         </div>
-        <div id="filesList">
-            
-        </div>
-        <div id="windowMenu">
-            <img id="min" src="../data/img/min.png" alt="">
-            <img id="close" src="../data/img/close.png" alt="">
-        </div>
-    </div>
-    <div id="menu">
-        <div id="editors" onclick="closeBoxes()">
-            <div class="lds-ripple"><div></div><div></div></div>
-        </div>
-    </div>
-    <div id="preview">
-
-    </div>
-    <div id="windowManager" onclick="toggleSettings()">
-        <div id="settings">
-            <div id="statusDisplay">
-                <h1>Program Status</h1>
-                <div id="statusPanel">
-                    <h3>Dedected Files</h3>
-                    <span class="greenDot"></span><p id="statusDisplayText">Operational</p>
-                    <br>
-                    <span class="orangeDot"></span><p id="statusDisplayText">Livestram only</p>
-                    <div id="fileStatusContainer"></div>
-                </div>
-    
-                <div id="statusPanel">
-                    <h3>Current Project</h3>
-                    <div id="projectStatusContainer">
-                        
-                    </div>
+        <div id="menu">
+            <div id="editors" onclick="closeBoxes()">
+                <div class="lds-ripple">
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
-            <div id="configurationDisplay">
-                <h1>Program Configuration</h1>
-                <div id="config">
-                    <h3>Editor</h3>
-                    <div id="configContainer">
-                        <p>Editor Position</p>
-                        <select id="dropdown" class="config_ePos">
-                            <option id="dropdownOption">Right</option>
-                            <option id="dropdownOption">Left</option>
-                        </select>
+        </div>
+        <div id="preview"></div>
+        <div id="windowManager" onclick="toggleSettings()">
+            <div id="settings">
+                <div id="statusDisplay">
+                    <h1>Program Status</h1>
+                    <div id="statusPanel">
+                        <h3>Dedected Files</h3>
+                        <span class="greenDot"></span>
+                        <p id="statusDisplayText">Operational</p>
+                        <br />
+                        <span class="orangeDot"></span>
+                        <p id="statusDisplayText">Livestram only</p>
+                        <div id="fileStatusContainer"></div>
                     </div>
-                    <br>
-                    <div id="configContainer">
-                        <p>Default Editor Size</p>
-                        <select id="dropdown" class="config_eSize">
-                            <option id="dropdownOption">Normal</option>
-                            <option id="dropdownOption">Large</option>
-                            <option id="dropdownOption">Hidden</option>
-                        </select>
-                </div>
-                </div>
-    
-                <div id="config">
-                    <h3>Preview</h3>
-                    <div id="configContainer">
-                        <p>DevTools</p>
-                        <select id="dropdown" class="config_pDevTools">
-                            <option id="dropdownOption">Show per Default</option>
-                            <option id="dropdownOption">Hide per Default</option>
-                        </select>
-                    </div>
-                    <br>
-                </div>
-    
-                <div id="config">
-                    <h3>Startup</h3>
-                    <div id="configContainer">
-                        <p>Open Project Directory</p>
-                        <select id="dropdown" class="config_sExplorer">
-                            <option id="dropdownOption">Yes</option>
-                            <option id="dropdownOption">No</option>
-                        </select>
-                    </div>
-                    <div id="configContainer">
-                        <p>Launch VSCode</p>
-                        <select id="dropdown" class="config_sCode">
-                            <option id="dropdownOption">Yes</option>
-                            <option id="dropdownOption">No</option>
-                        </select>
-                    </div>
-                </div>
-                <br>
-                <button id="actionButton" onclick="setOptions()">Save Changes</button>
-                <button id="actionButton" onclick="defaultOptions()">Reset</button>
-            </div>
-    
-            <div id="configurationDisplay">
-                <h1>Sandbox</h1>
-    
-                <div id="config">
-                    <h3>Template</h3>
-    
-                    <div id="configContainer">
-                        <p>Edit Template</p>
-                        <button id="configButton" onclick="showSandboxTemplate()">Open Directory</button>
-                    </div>
-                </div>
-    
-                <div id="config">
-                    <h3>Sandbox</h3>
-    
-                    <div id="configContainer">
-                        <p>Reset Sandbox</p>
-                        <button id="configButton" onclick="resetSandbox()">Reset</button>
-                    </div>
-                </div>
-            </div>
 
-            <div id="configurationDisplay">
-                <h1>Credits</h1>
-                <div class="credit" id="https://github.com/pexeus" onclick="openLink()">
-                    <img src="../data/img/git.png" alt="">
-                    <p>Me</p>
+                    <div id="statusPanel">
+                        <h3>Current Project</h3>
+                        <div id="projectStatusContainer"></div>
+                    </div>
+                </div>
+                <div id="configurationDisplay">
+                    <h1>Program Configuration</h1>
+                    <div id="config">
+                        <h3>Editor</h3>
+                        <div id="configContainer">
+                            <p>Editor Position</p>
+                            <select id="dropdown" class="config_ePos">
+                                <option id="dropdownOption">Right</option>
+                                <option id="dropdownOption">Left</option>
+                            </select>
+                        </div>
+                        <br />
+                        <div id="configContainer">
+                            <p>Default Editor Size</p>
+                            <select id="dropdown" class="config_eSize">
+                                <option id="dropdownOption">Normal</option>
+                                <option id="dropdownOption">Large</option>
+                                <option id="dropdownOption">Hidden</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="config">
+                        <h3>Preview</h3>
+                        <div id="configContainer">
+                            <p>DevTools</p>
+                            <select id="dropdown" class="config_pDevTools">
+                                <option id="dropdownOption"
+                                    >Show per Default</option
+                                >
+                                <option id="dropdownOption"
+                                    >Hide per Default</option
+                                >
+                            </select>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div id="config">
+                        <h3>Startup</h3>
+                        <div id="configContainer">
+                            <p>Open Project Directory</p>
+                            <select id="dropdown" class="config_sExplorer">
+                                <option id="dropdownOption">Yes</option>
+                                <option id="dropdownOption">No</option>
+                            </select>
+                        </div>
+                        <div id="configContainer">
+                            <p>Launch VSCode</p>
+                            <select id="dropdown" class="config_sCode">
+                                <option id="dropdownOption">Yes</option>
+                                <option id="dropdownOption">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <button id="actionButton" onclick="setOptions()">
+                        Save Changes
+                    </button>
+                    <button id="actionButton" onclick="defaultOptions()">
+                        Reset
+                    </button>
                 </div>
 
-                <div class="credit" id="https://github.com/saemselen" onclick="openLink()">
-                    <img src="../data/img/git.png" alt="">
-                    <p>Saemselen</p>
+                <div id="configurationDisplay">
+                    <h1>Sandbox</h1>
+
+                    <div id="config">
+                        <h3>Template</h3>
+
+                        <div id="configContainer">
+                            <p>Edit Template</p>
+                            <button
+                                id="configButton"
+                                onclick="showSandboxTemplate()"
+                            >
+                                Open Directory
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="config">
+                        <h3>Sandbox</h3>
+
+                        <div id="configContainer">
+                            <p>Reset Sandbox</p>
+                            <button id="configButton" onclick="resetSandbox()">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="configurationDisplay">
+                    <h1>Credits</h1>
+                    <div
+                        class="credit"
+                        id="https://github.com/pexeus"
+                        onclick="openLink()"
+                    >
+                        <img src="../data/img/git.png" alt="" />
+                        <p>Me</p>
+                    </div>
+
+                    <div
+                        class="credit"
+                        id="https://github.com/saemselen"
+                        onclick="openLink()"
+                    >
+                        <img src="../data/img/git.png" alt="" />
+                        <p>Saemselen</p>
+                    </div>
                 </div>
 
                 <div class="credit" id="https://www.flaticon.com" onclick="openLink()">
@@ -143,16 +168,15 @@
                     <p>FlatIcon</p>
                 </div>
             </div>
-    </div>
-    </div>
-    <link rel="stylesheet" href="editor.css">
-    <link rel="stylesheet" href="settings.css">
-    <script src="jscolor.js"></script>
-    <script src="update.js"></script>
-    <script src="setup.js"></script>
-    <script src="UI.js"></script>
-    <script src="menu.js"></script>
-    <script src="parser.js"></script>
-    <script src="settings.js"></script>
-</body>
+        </div>
+        <link rel="stylesheet" href="editor.css" />
+        <link rel="stylesheet" href="settings.css" />
+        <script src="jscolor.js"></script>
+        <script src="update.js"></script>
+        <script src="setup.js"></script>
+        <script src="UI.js"></script>
+        <script src="menu.js"></script>
+        <script src="parser.js"></script>
+        <script src="settings.js"></script>
+    </body>
 </html>

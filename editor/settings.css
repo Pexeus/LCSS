@@ -1,265 +1,265 @@
 #windowManager {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: calc(100% - 75px);
-    left: 0;
-    z-index: 5000;
-    transition: all ease-in-out .2s;
-    text-align: center;
-    padding-top: 20px;
-    overflow: scroll;
-    background-color: rgba(167, 167, 167, 0.185);
-    cursor: pointer;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 75px);
+  left: 0;
+  z-index: 5000;
+  transition: all ease-in-out 0.2s;
+  text-align: center;
+  padding-top: 20px;
+  overflow: scroll;
+  background-color: rgba(167, 167, 167, 0.185);
+  cursor: pointer;
 }
 
 #settings {
-    display: inline-block;
-    width: 80%;
-    max-width: 850px;
-    height: calc(100% - 100px);
-    background-color: #F9F9FA;
-    top: 100px;
-    z-index: 5000;
-    transition: all ease-in-out .2s;
-    text-align: center;
-    padding-top: 20px;
-    overflow: scroll;
-    border-radius: 2.5px;
-    box-shadow: 0px 0px 30px rgb(110, 110, 110);
+  display: inline-block;
+  width: 80%;
+  max-width: 850px;
+  height: calc(100% - 100px);
+  background-color: #f9f9fa;
+  top: 100px;
+  z-index: 5000;
+  transition: all ease-in-out 0.2s;
+  text-align: center;
+  padding-top: 20px;
+  overflow: scroll;
+  border-radius: 2.5px;
+  box-shadow: 0px 0px 30px rgb(110, 110, 110);
 }
 
 #statusDisplay {
-    display: block;
-    padding: 50px;
-    border-radius: 2.5px;
-    text-align: left;
+  display: block;
+  padding: 50px;
+  border-radius: 2.5px;
+  text-align: left;
 }
 
 #statusDisplay h1 {
-    color: rgb(94, 154, 209);
-    margin-bottom: 15px;
+  color: rgb(94, 154, 209);
+  margin-bottom: 15px;
 }
 
 #statusPanel {
-    display: inline-block;
-    padding: 12px;
-    border-radius: 2.5px;
-    box-shadow: 0px 0px 5px 0px rgba(158,158,158,0.5);
-    margin: 20px;
-    vertical-align: top;
-    max-width: 90%;
+  display: inline-block;
+  padding: 12px;
+  border-radius: 2.5px;
+  box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.5);
+  margin: 20px;
+  vertical-align: top;
+  max-width: 90%;
 }
 
 #statusPanel .StatusContainer_live {
-    text-align: center;
-    font-size: 10pt;
-    padding: 5px;
-    display: inline-block;
-    border-radius: 2.5px;
-    background-color: #e67d22bd;
-    margin: 10px;
+  text-align: center;
+  font-size: 10pt;
+  padding: 5px;
+  display: inline-block;
+  border-radius: 2.5px;
+  background-color: #e67d22bd;
+  margin: 10px;
 }
 
 #statusPanel .StatusContainer_operational {
-    text-align: center;
-    font-size: 10pt;
-    padding: 5px;
-    display: inline-block;
-    border-radius: 2.5px;
-    background-color: #27ae5fc9;
-    margin: 10px;
+  text-align: center;
+  font-size: 10pt;
+  padding: 5px;
+  display: inline-block;
+  border-radius: 2.5px;
+  background-color: #27ae5fc9;
+  margin: 10px;
 }
 
 #statusPanel img {
-    width: 80px;
+  width: 80px;
 }
 
 #statusPanel h3 {
-    font-weight: bold;
-    color:rgb(94, 154, 209);
-    vertical-align: middle;
-    margin-bottom: 8px;
-    border-left: 3px solid rgb(94, 154, 209);
-    padding-left: 5px;
+  font-weight: bold;
+  color: rgb(94, 154, 209);
+  vertical-align: middle;
+  margin-bottom: 8px;
+  border-left: 3px solid rgb(94, 154, 209);
+  padding-left: 5px;
 }
 
 #statusPanel #statusDisplayText {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .greenDot {
-    height: 15px;
-    width: 15px;
-    margin-right: 5px;
-    background-color: #27ae5fc9;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #27ae5fc9;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 .orangeDot {
-    height: 15px;
-    width: 15px;
-    margin-right: 5px;
-    background-color: #e67d22bd;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #e67d22bd;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 #projectStatusContainer p {
-    background-color: rgba(167, 167, 167, 0.185);
-    padding: 8px;
-    border-radius: 2.5px;
-    margin: 8px;
-    margin-top: 20px;
-    font-weight: bold;
-    color:rgb(97, 97, 97);
+  background-color: rgba(167, 167, 167, 0.185);
+  padding: 8px;
+  border-radius: 2.5px;
+  margin: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: rgb(97, 97, 97);
 }
 
 #configurationDisplay {
-    display: block;
-    padding: 50px;
-    border-radius: 2.5px;
-    text-align: left;
+  display: block;
+  padding: 50px;
+  border-radius: 2.5px;
+  text-align: left;
 }
 
 #config {
-    display: inline-block;
-    padding: 12px;
-    border-radius: 2.5px;
-    box-shadow: 0px 0px 5px 0px rgba(158,158,158,0.5);
-    margin: 20px;
-    vertical-align: top;
-    width: 800px;
-    max-width: 90%;
+  display: inline-block;
+  padding: 12px;
+  border-radius: 2.5px;
+  box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.5);
+  margin: 20px;
+  vertical-align: top;
+  width: 800px;
+  max-width: 90%;
 }
 
-#config  h3 {
-    font-weight: bold;
-    color:rgb(94, 154, 209);
-    vertical-align: middle;
-    margin-bottom: 8px;
-    border-left: 3px solid rgb(94, 154, 209);
-    padding-left: 5px;
+#config h3 {
+  font-weight: bold;
+  color: rgb(94, 154, 209);
+  vertical-align: middle;
+  margin-bottom: 8px;
+  border-left: 3px solid rgb(94, 154, 209);
+  padding-left: 5px;
 }
 
 #configurationDisplay h1 {
-    color: rgb(94, 154, 209);
-    margin-bottom: 15px;
+  color: rgb(94, 154, 209);
+  margin-bottom: 15px;
 }
 
 #configContainer {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(158,158,158,0.5);
-    text-align: left;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.5);
+  text-align: left;
 }
 
 #configContainer * {
-    display: inline-block;
+  display: inline-block;
 }
 
 #configContainer select {
-    float: right;
-    background-color: transparent;
-    font-size: 10pt;
-    color: rgb(97, 97, 97);
-    font-weight: 600;
-    cursor: pointer;
+  float: right;
+  background-color: transparent;
+  font-size: 10pt;
+  color: rgb(97, 97, 97);
+  font-weight: 600;
+  cursor: pointer;
 }
 
 #configContainer select:hover {
-    color: rgb(94, 154, 209);
+  color: rgb(94, 154, 209);
 }
 
 #configContainer #configButton {
-    float: right;
-    background-color: transparent;
-    font-size: 10pt;
-    color: rgb(97, 97, 97);
-    font-weight: 600;
-    border: 0;
-    margin-right: 5px;
-    cursor: pointer;
+  float: right;
+  background-color: transparent;
+  font-size: 10pt;
+  color: rgb(97, 97, 97);
+  font-weight: 600;
+  border: 0;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 #configContainer #configButton:hover {
-    float: right;
-    background-color: transparent;
-    font-size: 10pt;
-    color: rgb(94, 154, 209);
-    font-weight: 600;
-    border: 0;
-    margin-right: 5px;
+  float: right;
+  background-color: transparent;
+  font-size: 10pt;
+  color: rgb(94, 154, 209);
+  font-weight: 600;
+  border: 0;
+  margin-right: 5px;
 }
 
 #configContainer p {
-    font-weight: bold;
-    margin-top: 3px;
-    color: rgb(97, 97, 97);
-    font-size: 10pt;
-    font-weight: 600;
+  font-weight: bold;
+  margin-top: 3px;
+  color: rgb(97, 97, 97);
+  font-size: 10pt;
+  font-weight: 600;
 }
 
 #settings #actionButton {
-    background-color: transparent;
-    display: inline-block;
-	border: 2px solid rgb(94, 154, 209);
-	padding: 18px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-radius: 5px;
-	vertical-align: middle;
-	color: rgb(94, 154, 209);
-    cursor: pointer;
-    font-size: larger;
-    transition: all ease-in-out .2s;
-    margin-right: 50px;
+  background-color: transparent;
+  display: inline-block;
+  border: 2px solid rgb(94, 154, 209);
+  padding: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: rgb(94, 154, 209);
+  cursor: pointer;
+  font-size: larger;
+  transition: all ease-in-out 0.2s;
+  margin-right: 50px;
 }
 
 #settings #actionButton:hover {
-    background-color: rgb(94, 154, 209);
-	border: 2px solid rgb(94, 154, 209);
-	padding: 18px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-radius: 5px;
-	vertical-align: middle;
-	color: white;
-    cursor: pointer;
-    font-size: larger;
-    transition: all ease-in-out .2s;
+  background-color: rgb(94, 154, 209);
+  border: 2px solid rgb(94, 154, 209);
+  padding: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: white;
+  cursor: pointer;
+  font-size: larger;
+  transition: all ease-in-out 0.2s;
 }
 
 .credit {
-    width: 100px;
-    text-align: center;
-    margin: 10px;
-    cursor: pointer;
-    display: inline-block;
-    transition: all .1s ease-in-out;
-    box-shadow: 0px 0px 2px rgb(201, 201, 201);
-    padding: 10px;
-    border-radius: 2.5px;
-    background-color: white;
+  width: 100px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 0px 2px rgb(201, 201, 201);
+  padding: 10px;
+  border-radius: 2.5px;
+  background-color: white;
 }
 
 .credit * {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .credit:hover {
-    color: rgb(94, 154, 209);
-    box-shadow: 0px 0px 5px 0px rgba(158,158,158,0.5);
+  color: rgb(94, 154, 209);
+  box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.5);
 }
 
 .credit img {
-    width: 90%;
+  width: 90%;
 }

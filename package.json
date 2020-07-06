@@ -1,24 +1,37 @@
 {
-  "name": "livecss",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron main.js",
-    "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator --icon=icon.png"
-  },
-  "author": "verion",
-  "license": "ISC",
-  "dependencies": {
-    "chokidar": "^3.4.0",
-    "css-to-object": "^1.1.0",
-    "electron": "^9.0.5",
-    "ncp": "^2.0.0",
-    "open-file-explorer": "^1.0.2",
-    "rimraf": "^3.0.2"
-  },
-  "devDependencies": {
-    "electron-packager": "^15.0.0",
-    "electron-wix-msi": "^2.2.0"
-  }
+    "name": "livecss",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron main.js",
+        "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator --icon=icon.png",
+        "prettier": "npx prettier --write ."
+    },
+    "author": "verion",
+    "license": "ISC",
+    "dependencies": {
+        "chokidar": "^3.4.0",
+        "css-to-object": "^1.1.0",
+        "electron": "^9.0.5",
+        "ncp": "^2.0.0",
+        "open-file-explorer": "^1.0.2",
+        "rimraf": "^3.0.2"
+    },
+    "devDependencies": {
+        "electron-packager": "^15.0.0",
+        "electron-wix-msi": "^2.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "husky": "^4.2.5",
+        "lint-staged": "^10.2.11",
+        "prettier": "2.0.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,css,md}": "npx prettier --write ."
+    }
 }
