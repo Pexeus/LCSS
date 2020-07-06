@@ -239,6 +239,8 @@ function targetElement2(clicked) {
 }
 
 setTimeout(function () {
-    getFiles();
-    insertTools();
-}, 50);
+  getFiles()
+  insertTools()
+}, 50)
+
+console.log("LiveCSS connected!")
