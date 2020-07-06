@@ -41,11 +41,7 @@ function createEditor() {
 
     editorWindow.loadFile("./editor/index.html");
 
-<<<<<<< HEAD
-    //editorWindow.webContents.openDevTools()
-=======
     editorWindow.webContents.openDevTools();
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
 
     setupWindow.close();
 

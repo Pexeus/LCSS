@@ -66,25 +66,6 @@ function removeLinks(sources) {
         links.forEach((link) => {
             href = String(link.href.toLowerCase());
             if (href.includes(source.toLowerCase())) {
-<<<<<<< HEAD
-                //console.log("match: " + href + "[link]")
-                checklist += href
-                remove(link)
-          }
-        }
-        )
-
-        for (i = 0; i < imports.length; i++) {
-          if (imports[i].innerHTML.toLowerCase().includes(source.toLowerCase())) {
-
-            importTag = extractCSSImport(imports[i].innerHTML, source)
-            //console.log(extractCSSImport(imports[i].innerHTML, source))
-
-            //console.log("match: " + importTag + " [Import]")
-            checklist += importTag
-            remove(imports[i])
-          }
-=======
                 console.log("match: " + href + "[link]");
                 checklist += href;
                 remove(link);
@@ -104,7 +85,6 @@ function removeLinks(sources) {
                 checklist += importTag;
                 remove(imports[i]);
             }
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
         }
     });
     updateStatus(checklist);
@@ -145,13 +125,8 @@ function createCSS(file) {
 
 //CSS aktualisieren
 function updateCSS() {
-<<<<<<< HEAD
-  if (css != "" && css != currentCSS) {
-    //console.log("pushing: \n" + css);
-=======
     if (css != "" && css != currentCSS) {
         console.log("pushing: \n" + css);
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
 
         if (document.getElementById("dynamicCSS") != null) {
             style = document.getElementById("dynamicCSS");
@@ -168,13 +143,6 @@ function updateCSS() {
     } else {
         console.log("not Pushing: " + css);
     }
-<<<<<<< HEAD
-  }
-  else {
-    //console.log("not Pushing: " + css)
-  }
-=======
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
 }
 
 function insertTools() {
@@ -205,11 +173,7 @@ function coolDown() {
 function sendElement(element) {
     dispatch = targetElement(element);
 
-<<<<<<< HEAD
-  //console.log(dispatch)
-=======
     console.log(dispatch);
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
 
     ipcRenderer.sendSync("requestProprity", dispatch);
 }
@@ -272,24 +236,11 @@ function targetElement2(clicked) {
         console.log("tries: " + tries + "| target: " + target);
         tries += 1;
     }
-<<<<<<< HEAD
-
-    //console.log("tries: " + tries + "| target: " + target)
-    tries += 1
-  }
-=======
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
 }
 
 setTimeout(function () {
-<<<<<<< HEAD
   getFiles()
   insertTools()
 }, 50)
 
 console.log("LiveCSS connected!")
-=======
-    getFiles();
-    insertTools();
-}, 50);
->>>>>>> 5f2aaa3220e3001a9f18ecfffb3c28a204007a8d
