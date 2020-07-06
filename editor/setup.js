@@ -1,21 +1,24 @@
-const rimraf = require('rimraf');
+const rimraf = require("rimraf");
 
-config = ipcRenderer.sendSync('requestConfig', '')
-liveDir = appPath + "/data/live"
+config = ipcRenderer.sendSync("requestConfig", "");
+liveDir = appPath + "/data/live";
 
 //
-var path = require('path')
-const openExplorer = require('open-file-explorer');
+var path = require("path");
+const openExplorer = require("open-file-explorer");
 const { exec } = require("child_process");
 //
 
 function setURL(config) {
-    preview = document.getElementById("preview")
-    preview.innerHTML = "<webview src=" + config.url + " preload=inject.js id=previewWindow allowpopups/>"
+    preview = document.getElementById("preview");
+    preview.innerHTML =
+        "<webview src=" +
+        config.url +
+        " preload=inject.js id=previewWindow allowpopups/>";
 }
 
 function devTools() {
-    webview = document.getElementById("previewWindow")
+    webview = document.getElementById("previewWindow");
 
     webview.openDevTools();
 }
@@ -24,64 +27,63 @@ function quickAccess(file) {
     if (path.extname(file) == ".html" || path.extname(file) == ".php") {
         //console.log("Adding to quickbar: " + file)
 
-        container = document.getElementById("filesList")
-        button = insertQAButton(file)
+        container = document.getElementById("filesList");
+        button = insertQAButton(file);
 
-        container.appendChild(button)
+        container.appendChild(button);
     }
 }
 
 //Buttons für den wechsel zwischen den files (im head)
 function insertQAButton(file) {
-    btn = document.createElement("button")
-    btn.innerHTML = file
-    btn.id = "fileSelector"
+    btn = document.createElement("button");
+    btn.innerHTML = file;
+    btn.id = "fileSelector";
 
     if (config.url.includes(file) || file.includes("index")) {
-        QASetActive(btn)
+        QASetActive(btn);
     }
 
-    btn.onclick = function() {
+    btn.onclick = function () {
         if (config.url.includes(".html")) {
+            console.log(config.url.replace(/^.*[\\\/]/, ""));
 
-            console.log(config.url.replace(/^.*[\\\/]/, ''))
-
-            file = config.url.replace(/^.*[\\\/]/, '')
-            url = config.url.replace(file, "")
+            file = config.url.replace(/^.*[\\\/]/, "");
+            url = config.url.replace(file, "");
         }
-        url = url + event.target.innerHTML
+        url = url + event.target.innerHTML;
 
-        newConf = {url: url, directory: config.directory}
-        console.log(newConf)
-        setURL(newConf)
+        newConf = { url: url, directory: config.directory };
+        console.log(newConf);
+        setURL(newConf);
 
-        QASetActive(event.target)
-    }
+        QASetActive(event.target);
+    };
 
-    return btn
+    return btn;
 }
 
-
 function QASetActive(btn) {
-    files = document.getElementById("filesList").childNodes
+    files = document.getElementById("filesList").childNodes;
 
-    for(var i=0; i<files.length; i++) {
+    for (var i = 0; i < files.length; i++) {
         if (files[i].id == "fileSelector") {
-            files[i].classList.remove("activeButton")
+            files[i].classList.remove("activeButton");
         }
     }
 
-
-    btn.classList.add("activeButton")
+    btn.classList.add("activeButton");
 }
 
 //Projektverzeichnis im file expolorer öffnen
 function openWorkspace(config) {
-    options = JSON.parse(fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"))
+    options = JSON.parse(
+        fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
+    );
 
     if (options.openDirectory == true) {
-        openExplorer(config.directory, err => {
-            if(err) {
+        openExplorer(config.directory, (err) => {
+            if (err) {
                 console.log(err);
             }
         });
@@ -90,10 +92,12 @@ function openWorkspace(config) {
 
 //vscode öffnen
 function openCode(config) {
-    options = JSON.parse(fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"))
+    options = JSON.parse(
+        fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
+    );
 
     if (options.openCode == true) {
-        executeCommand("code " + config.directory)
+        executeCommand("code " + config.directory);
     }
 }
 
@@ -112,7 +116,6 @@ function executeCommand(command) {
     });
 }
 
-
-openWorkspace(config)
-openCode(config)
-setURL(config)
+openWorkspace(config);
+openCode(config);
+setURL(config);

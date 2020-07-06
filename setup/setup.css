@@ -1,230 +1,230 @@
 * {
-    font-family: 'Muli', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: rgb(114, 114, 114);
-    transition: all ease-in-out .2s;
-    outline: none;
-    -webkit-app-region: no-drag;
+  font-family: "Muli", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgb(114, 114, 114);
+  transition: all ease-in-out 0.2s;
+  outline: none;
+  -webkit-app-region: no-drag;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 html {
-    background-color: transparent;
-    width: 100%;
+  background-color: transparent;
+  width: 100%;
 }
 
 body {
-    width: 100%;
+  width: 100%;
 }
 
 #frame {
-    width: 100%;
-    height: 100vh;
-    background-color: #f9f9fa;
-    text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9fa;
+  text-align: center;
 }
 
 #head {
-    width: 100%;
-    height: 31px;
-    background-color: #ffffff;
-    -webkit-app-region: drag;
-    box-shadow: 0px 0px 3px rgb(153, 153, 153);
-    text-align: left;
+  width: 100%;
+  height: 31px;
+  background-color: #ffffff;
+  -webkit-app-region: drag;
+  box-shadow: 0px 0px 3px rgb(153, 153, 153);
+  text-align: left;
 }
 
 #windowMenu {
-    display: inline-block;
-    position: absolute;
-    height: 31px;
-    top: 0;
-    right: 0;
+  display: inline-block;
+  position: absolute;
+  height: 31px;
+  top: 0;
+  right: 0;
 }
 
 #windowMenu img {
-    height: 15px;
-    padding: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 0px;
-    cursor: pointer;
-    filter: invert(.4);
+  height: 15px;
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 0px;
+  cursor: pointer;
+  filter: invert(0.4);
 }
 
-
 #windowMenu #close:hover {
-    filter: invert(1);
-    background-color: #00ffff
+  filter: invert(1);
+  background-color: #00ffff;
 }
 
 #frame h1 {
-    color: rgb(94, 154, 209);
-    vertical-align: middle;
-    display: inline-block;
-    width: 90%;
-    text-align: left;
-    font-size: 23pt;
-    margin-bottom: 20px;
-    margin-top: 20px;
+  color: rgb(94, 154, 209);
+  vertical-align: middle;
+  display: inline-block;
+  width: 90%;
+  text-align: left;
+  font-size: 23pt;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #selection {
-    width: 90%;
-    display: inline-block;
-    text-align: left;
-    display: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  width: 90%;
+  display: inline-block;
+  text-align: left;
+  display: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #selection p {
-    display: inline-block;
-    font-size: 12pt;
-    font-weight: 700;
-    margin-right: 8px;
-    margin-top: 20px;
+  display: inline-block;
+  font-size: 12pt;
+  font-weight: 700;
+  margin-right: 8px;
+  margin-top: 20px;
 }
 
 #selection input {
-    border: 0;
-    border-radius: 5px;
-    background-color: #dfdfdf;
-    padding: 5px;
-    padding-left: 8px;
-    outline: none;
-    font-size: 12pt;
+  border: 0;
+  border-radius: 5px;
+  background-color: #dfdfdf;
+  padding: 5px;
+  padding-left: 8px;
+  outline: none;
+  font-size: 12pt;
 }
 
 #selection input:focus {
-    background-color: #dfdfdf8e;
-    color: black
+  background-color: #dfdfdf8e;
+  color: black;
 }
 
 #selection button {
-    margin: 25px;
-    margin-left: 0px;
-    display: block;
+  margin: 25px;
+  margin-left: 0px;
+  display: block;
 }
 
 #selectFolder {
-    border: 0;
-    border-radius: 5px;
-    background-color: gray;
-    background-color: #dfdfdf;
-    padding: 5px;
-    padding-right: 8px;
-    padding-left: 8px;
-    outline: none;
-    margin-bottom: 20px;
-    font-size: 12pt;
-    cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background-color: gray;
+  background-color: #dfdfdf;
+  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  outline: none;
+  margin-bottom: 20px;
+  font-size: 12pt;
+  cursor: pointer;
 }
 
 #selectFolder:hover {
-    color: white;
-    background-color: rgb(94, 154, 209);
+  color: white;
+  background-color: rgb(94, 154, 209);
 }
 
 .hiddenInput {
-    width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 #projects {
-    width: 100%;
-    display: inline-block;
-    height: 150px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    overflow: scroll;
+  width: 100%;
+  display: inline-block;
+  height: 150px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  overflow: scroll;
 }
 
 #projectSelector {
-    width: 90%;
-    display: inline-block;
-    background-color: white;
-    box-shadow: 0px 0px 3px rgb(153, 153, 153);
-    margin-top: 8px;
-    border-radius: 5px;
-    color: rgb(105, 105, 105);
-    padding-top: 12px;
-    padding-bottom: 12px;
-    cursor: pointer;
-    transition: all .2s;
+  width: 90%;
+  display: inline-block;
+  background-color: white;
+  box-shadow: 0px 0px 3px rgb(153, 153, 153);
+  margin-top: 8px;
+  border-radius: 5px;
+  color: rgb(105, 105, 105);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-#projectSelector #pURL, #pPath {
-    display: none;
+#projectSelector #pURL,
+#pPath {
+  display: none;
 }
 
 #projectSelector #pPreview {
-    font-weight: 700;
-    color: rgb(94, 154, 209);
+  font-weight: 700;
+  color: rgb(94, 154, 209);
 }
 
 #projectSelector:hover {
-    box-shadow: 0px 2px 8px rgb(153, 153, 153);
-    background-color: rgb(94, 154, 209);
+  box-shadow: 0px 2px 8px rgb(153, 153, 153);
+  background-color: rgb(94, 154, 209);
 }
 
 #projectSelector:hover > #pPreview {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 #showProjects {
-    display: none;
+  display: none;
 }
 
 #under {
-    position: absolute;
-    bottom: 0px;
-    background-color: transparent;
-    width: 90%;
-    text-align: right;
-    padding: 5%;
-    display: none;
+  position: absolute;
+  bottom: 0px;
+  background-color: transparent;
+  width: 90%;
+  text-align: right;
+  padding: 5%;
+  display: none;
 }
 
 #under p {
-    text-align: left;
-    font-size: larger;
-    padding-bottom: 20px;
+  text-align: left;
+  font-size: larger;
+  padding-bottom: 20px;
 }
 
 .setupButton {
-    background-color: transparent;
-    display: inline-block;
-	border: 2px solid rgb(94, 154, 209);
-	padding: 18px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-radius: 5px;
-	vertical-align: middle;
-	color: rgb(94, 154, 209);
-    margin: 3.5px;
-    cursor: pointer;
-    font-size: larger;
-    transition: all ease-in-out .2s;
+  background-color: transparent;
+  display: inline-block;
+  border: 2px solid rgb(94, 154, 209);
+  padding: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: rgb(94, 154, 209);
+  margin: 3.5px;
+  cursor: pointer;
+  font-size: larger;
+  transition: all ease-in-out 0.2s;
 }
 
 .setupButton:hover {
-    background-color: rgb(94, 154, 209);
-	border: 2px solid rgb(94, 154, 209);
-	padding: 18px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-radius: 5px;
-	vertical-align: middle;
-	color: white;
-    cursor: pointer;
-    font-size: larger;
-    transition: all ease-in-out .2s;
+  background-color: rgb(94, 154, 209);
+  border: 2px solid rgb(94, 154, 209);
+  padding: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: white;
+  cursor: pointer;
+  font-size: larger;
+  transition: all ease-in-out 0.2s;
 }

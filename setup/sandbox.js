@@ -1,14 +1,17 @@
-var path = require("path")
+var path = require("path");
 
-encodedDir = __dirname.replace(/ /g, "%20")
+encodedDir = __dirname.replace(/ /g, "%20");
 
-sandboxes = []
+sandboxes = [];
 
-sandboxes[0] = {path: path.join(__dirname, '..', '/data/sandbox/'), url: 'file:///' + path.join(encodedDir, '..', '/data/sandbox/index.html')}
+sandboxes[0] = {
+    path: path.join(__dirname, "..", "/data/sandbox/"),
+    url: "file:///" + path.join(encodedDir, "..", "/data/sandbox/index.html"),
+};
 
 function displaySandbox() {
-    console.log(sandboxes[0])
-    displayProjects(sandboxes)
+    console.log(sandboxes[0]);
+    displayProjects(sandboxes);
 }
 
-displaySandbox()
+displaySandbox();
