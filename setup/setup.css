@@ -21,6 +21,10 @@ body {
   width: 100%;
 }
 
+.title-window {
+  padding-left: 10px;
+}
+
 #frame {
   width: 100%;
   height: 100vh;
@@ -33,8 +37,10 @@ body {
   height: 31px;
   background-color: #ffffff;
   -webkit-app-region: drag;
-  box-shadow: 0px 0px 3px rgb(153, 153, 153);
-  text-align: left;
+  box-shadow: 0 0 3px rgb(153, 153, 153);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #windowMenu {
@@ -185,16 +191,15 @@ body {
 
 #under {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   background-color: transparent;
-  width: 90%;
-  text-align: right;
-  padding: 5%;
+  width: 100%;
   display: none;
+  margin-bottom: 20px;
 }
 
 #under p {
-  text-align: left;
+  text-align: center;
   font-size: larger;
   padding-bottom: 20px;
 }
@@ -227,4 +232,8 @@ body {
   cursor: pointer;
   font-size: larger;
   transition: all ease-in-out 0.2s;
+}
+
+.url-input {
+  margin-bottom: 20px;
 }
