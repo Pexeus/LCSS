@@ -22,6 +22,7 @@
         "cz-conventional-changelog": "^3.2.0",
         "electron-packager": "^15.0.0",
         "electron-wix-msi": "^2.2.0",
+        "eslint": "^7.4.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-config-prettier-standard": "^3.0.1",
         "eslint-config-standard": "^14.1.1",
