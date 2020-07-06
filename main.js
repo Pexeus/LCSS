@@ -20,7 +20,7 @@ function createSetup() {
     setupWindow.loadFile("./setup/index.html")
 
     //devtools
-    setupWindow.webContents.openDevTools({mode:'undocked'})
+    //setupWindow.webContents.openDevTools({mode:'undocked'})
 }
 
 function createEditor() {
@@ -41,7 +41,7 @@ function createEditor() {
 
     editorWindow.loadFile("./editor/index.html")
 
-    editorWindow.webContents.openDevTools()
+    //editorWindow.webContents.openDevTools()
 
     setupWindow.close()
 

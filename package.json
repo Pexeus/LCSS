@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . ../LCSS"
+    "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator --icon=icon.png"
   },
   "author": "verion",
   "license": "ISC",

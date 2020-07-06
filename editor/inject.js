@@ -30,7 +30,7 @@ fs.watch(liveDir, (eventType, filename) => {
 //user workspace watch
 fs.watch(config.directory, (eventType, file) => {
   if (path.extname(file) !== ".css") {
-    console.log("Change at " + file + " Reloading...")
+    //console.log("Change at " + file + " Reloading...")
     location.reload()
   }
 })
@@ -67,7 +67,7 @@ function removeLinks(sources) {
         links.forEach(link => {
             href = String(link.href.toLowerCase())
             if (href.includes(source.toLowerCase())) {
-                console.log("match: " + href + "[link]")
+                //console.log("match: " + href + "[link]")
                 checklist += href
                 remove(link)
           }
@@ -78,9 +78,9 @@ function removeLinks(sources) {
           if (imports[i].innerHTML.toLowerCase().includes(source.toLowerCase())) {
 
             importTag = extractCSSImport(imports[i].innerHTML, source)
-            console.log(extractCSSImport(imports[i].innerHTML, source))
+            //console.log(extractCSSImport(imports[i].innerHTML, source))
 
-            console.log("match: " + importTag + " [Import]")
+            //console.log("match: " + importTag + " [Import]")
             checklist += importTag
             remove(imports[i])
           }
@@ -126,7 +126,7 @@ function createCSS(file) {
 //CSS aktualisieren
 function updateCSS() {
   if (css != "" && css != currentCSS) {
-    console.log("pushing: \n" + css);
+    //console.log("pushing: \n" + css);
 
     if (document.getElementById("dynamicCSS") !=  null) {
       style = document.getElementById("dynamicCSS")
@@ -143,7 +143,7 @@ function updateCSS() {
     }
   }
   else {
-    console.log("not Pushing: " + css)
+    //console.log("not Pushing: " + css)
   }
 }
 
@@ -176,7 +176,7 @@ function coolDown() {
 function sendElement(element) {
   dispatch = targetElement(element)
 
-  console.log(dispatch)
+  //console.log(dispatch)
 
   ipcRenderer.sendSync('requestProprity', dispatch)
 }
@@ -240,7 +240,7 @@ function targetElement2(clicked) {
       target = target.parentNode
     }
 
-    console.log("tries: " + tries + "| target: " + target)
+    //console.log("tries: " + tries + "| target: " + target)
     tries += 1
   }
 }
@@ -251,3 +251,5 @@ setTimeout(function () {
   getFiles()
   insertTools()
 }, 50)
+
+console.log("LiveCSS connected!")
