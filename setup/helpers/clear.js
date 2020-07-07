@@ -1,7 +1,7 @@
 const fs = require("fs");
-pathModule = require("path");
+const path = require("path");
 
-console.log("clearing up...");
+// console.log("clearing up...");
 
 function clearDir(directory) {
     fs.readdir(directory, (err, files) => {
@@ -9,11 +9,11 @@ function clearDir(directory) {
         console.log("clearing: " + directory);
         for (const file of files) {
             console.log("removing: " + file);
-            fs.unlink(pathModule.join(directory, file), (err) => {
+            fs.unlink(path.join(directory, file), (err) => {
                 if (err) throw err;
             });
         }
     });
 }
 
-clearDir(remote.app.getAppPath() + "/data/live");
+module.exports = clearDir;

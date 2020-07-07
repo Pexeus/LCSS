@@ -1,22 +1,21 @@
 const { ipcRenderer } = require("electron");
-const remote = require("electron").remote;
-
-path = "";
-url = "";
+const clearDir = require("./clear");
 
 function getDirectory() {
-    path = ipcRenderer.sendSync("requestPath", "");
+    let path = "";
 
-    console.log(path);
+    path = ipcRenderer.sendSync("requestPath", "");
 }
 
 function validateInput() {
+    let url = "";
+    let files;
+
     url = document.getElementById("urlnput").value;
     files = document.getElementById("direcoryInput").files;
 
     if (files.length > 0) {
         dir = files[0].path.replace(files[0].name, "");
-
         if (url != "") {
             url = url.replace(/ /g, "%20");
             console.log("Path: " + dir + " | URL: " + url);
@@ -37,7 +36,7 @@ function validateInput() {
 }
 
 function determineStart(files) {
-    value = "";
+    let value = "";
 
     for (let i = 0; i < files.length; i++) {
         if (files[i].name.includes("index")) {
@@ -45,7 +44,7 @@ function determineStart(files) {
         }
     }
 
-    if (value == "") {
+    if (value === "") {
         for (let i = 0; i < files.length; i++) {
             if (
                 files[i].name.includes(".php") ||
@@ -71,7 +70,10 @@ function createEditor(dir, url) {
     ipcRenderer.sendSync("createEditor", editorConfig);
 }
 
-function closeSetup() {
-    var window = remote.getCurrentWindow();
-    window.close();
-}
+module.exports = {
+    getDirectory,
+    validateInput,
+    determineStart,
+    showError,
+    createEditor,
+};

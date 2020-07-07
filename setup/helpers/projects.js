@@ -1,6 +1,12 @@
 const fs = require("fs");
+const remote = require("electron").remote;
+const { showError, createEditor } = require("./getSources");
 
 function saveProject() {
+    let url = "";
+    let files = "";
+    let path = "";
+
     url = document.getElementById("urlnput").value;
     files = document.getElementById("direcoryInput").files;
 
@@ -15,8 +21,8 @@ function saveProject() {
 
 // Projekt zur projektliste hinzufügen
 function addList(path, url) {
-    list = getList();
-    project = { path: path, url: url };
+    let list = getList();
+    let project = { path: path, url: url };
 
     console.log(project);
 
@@ -42,7 +48,7 @@ function updateList(list) {
 
 // projektliste abrufen
 function getList() {
-    list = fs.readFileSync(
+    let list = fs.readFileSync(
         remote.app.getAppPath() + "/data/config/projects.txt",
         "utf-8",
     );
@@ -63,23 +69,23 @@ function getList() {
 
 // projekte anzeigen
 function displayProjects(projects) {
-    container = document.getElementById("projects");
+    const container = document.getElementById("projects");
 
     projects.forEach((project) => {
-        selector = projectBox(project);
+        const selector = projectBox(project);
 
         container.appendChild(selector);
     });
 }
 
 function projectBox(config) {
-    box = document.createElement("div");
-    box.id = "projectSelector";
-    previewText = document.createElement("p");
-    urlText = document.createElement("p");
-    pathText = document.createElement("p");
+    const box = document.createElement("div");
+    const previewText = document.createElement("p");
+    const urlText = document.createElement("p");
+    const pathText = document.createElement("p");
+    const folders = config.path.split("\\");
 
-    folders = config.path.split("\\");
+    box.id = "projectSelector";
     previewText.innerHTML = folders[folders.length - 2];
 
     urlText.innerHTML = config.url;
@@ -94,16 +100,13 @@ function projectBox(config) {
     box.appendChild(pathText);
 
     box.addEventListener("click", function () {
-        target = event.target;
+        const pURL = document.getElementById("pURL").innerHTML;
+        const pPath = document.getElementById("pPath").innerHTML;
+        let target = event.target;
 
         if (target.tagName != "div") {
             target = target.parentElement;
         }
-
-        console.log(target);
-
-        pURL = target.getElementsByTagName("p")[1].innerText;
-        pPath = target.getElementsByTagName("p")[2].innerText;
 
         console.log(pURL, pPath);
         createEditor(pPath, pURL);
@@ -140,9 +143,12 @@ function toggleSetup() {
     }
 }
 
-document.getElementById("close").addEventListener("click", function (e) {
-    var window = remote.getCurrentWindow();
-    window.close();
-});
-
-displayProjects(getList());
+module.exports = {
+    saveProject,
+    addList,
+    updateList,
+    getList,
+    displayProjects,
+    projectBox,
+    toggleSetup,
+};
