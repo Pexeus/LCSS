@@ -38,7 +38,6 @@
 
             <div id="projects"></div>
             <button
-                onclick="toggleSetup()"
                 id="showSelection"
                 class="setupButton"
             >
@@ -47,20 +46,16 @@
             <div id="under">
                 <p id="errorDisplay"></p>
                 <button
-                    onclick="toggleSetup()"
                     id="showProjects"
                     class="setupButton"
                 >
                     Projects
                 </button>
-                <button class="setupButton" onclick="validateInput()">
+                <button id="launchProject" class="setupButton">
                     Launch
                 </button>
             </div>
         </div>
-        <script src="getSources.js"></script>
-        <script src="clear.js"></script>
-        <script src="projects.js"></script>
-        <script src="sandbox.js"></script>
+        <script async src="./index.js"></script>
     </body>
 </html>
