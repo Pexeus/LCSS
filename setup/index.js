@@ -1,5 +1,7 @@
 "use strict";
 
+const remote = require("electron").remote;
+
 const CONFIG = require("./helpers/config");
 
 const clearDir = require("./helpers/clear");
