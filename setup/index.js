@@ -1,12 +1,8 @@
 const remote = require("electron").remote;
 const clearDir = require("./helpers/clear");
-const {
-    toggleSetup,
-    validateInput,
-    displayProjects,
-    getList,
-} = require("./helpers/projects");
+const { toggleSetup, displayProjects, getList } = require("./helpers/projects");
 const displaySandbox = require("./helpers/sandbox");
+const { validateInput } = require("./helpers/getSources");
 
 const DATA_PATH = "/data/live";
 
