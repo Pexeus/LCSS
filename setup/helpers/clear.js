@@ -1,7 +1,7 @@
+"use strict";
+
 const fs = require("fs");
 const path = require("path");
-
-// console.log("clearing up...");
 
 function clearDir(directory) {
     fs.readdir(directory, (err, files) => {

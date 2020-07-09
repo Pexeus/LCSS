@@ -1,17 +1,22 @@
+"use strict";
+
 const path = require("path");
+const CONFIG = require("./config");
 const { displayProjects } = require("./projects");
 
-const ENCODED_DIR = remote.app.getAppPath().replace(/ /g, "%20");
+const ENCODED_DIR = CONFIG.REMOTE_APP.replace(/ /g, "%20");
 
 function displaySandbox() {
-    let sandboxes = [];
+    const sandboxes = [];
 
     sandboxes[0] = {
-        path: path.join(remote.app.getAppPath(), "/data/sandbox/"),
-        url: "file:///" + path.join(ENCODED_DIR, "/data/sandbox/index.html"),
+        path: path.join(CONFIG.REMOTE_APP, `${CONFIG.DATA_SANDBOX}/`),
+        url: `file:///${path.join(
+            ENCODED_DIR,
+            `${CONFIG.DATA_SANDBOX}/index.html`,
+        )}`,
     };
 
-    console.log(sandboxes[0]);
     displayProjects(sandboxes);
 }
 
