@@ -1,11 +1,8 @@
 "use strict";
 
 const fs = require("fs");
-const remote = require("electron").remote;
 const { showError, createEditor } = require("./getSources");
 const CONFIG = require("./config");
-
-const PROJECT_CONFIG = "/data/config/projects.txt";
 
 function saveProject() {
     const urlInputVal = document.getElementById("urlInput").value;
@@ -40,12 +37,18 @@ function addList(path, url) {
 
 // projektliste aktualisieren
 function updateList(list) {
-    fs.writeFileSync(CONFIG.REMOTE_APP + PROJECT_CONFIG, JSON.stringify(list));
+    fs.writeFileSync(
+        CONFIG.REMOTE_APP + CONFIG.DATA_PROJECTS,
+        JSON.stringify(list),
+    );
 }
 
 // projektliste abrufen
 function getList() {
-    let list = fs.readFileSync(CONFIG.REMOTE_APP + PROJECT_CONFIG, "utf-8");
+    let list = fs.readFileSync(
+        CONFIG.REMOTE_APP + CONFIG.DATA_PROJECTS,
+        "utf-8",
+    );
 
     if (list === "") {
         // toggleSetup() wegen sandbox
