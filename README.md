@@ -9,10 +9,10 @@
 
 ## Development
 
-| Scripts             | Info                            |
-| ------------------- | ------------------------------- |
-| `npm i`             | installing deps                 |
-| `npm start`         | starting project                |
-| `npm run build`     | building project                |
-| `npm run lint:js`   | run eslint                      |
-| `npm run lint:fix`  | run eslint with `--fix` flag    |
+| Scripts            | Info                         |
+| ------------------ | ---------------------------- |
+| `npm i`            | installing deps              |
+| `npm start`        | starting project             |
+| `npm run build`    | building project             |
+| `npm run lint:js`  | run eslint                   |
+| `npm run lint:fix` | run eslint with `--fix` flag |

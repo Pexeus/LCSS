@@ -1,10 +1,13 @@
+"use strict";
+
 const remote = require("electron").remote;
+
+const CONFIG = require("./helpers/config");
+
 const clearDir = require("./helpers/clear");
 const { toggleSetup, displayProjects, getList } = require("./helpers/projects");
 const displaySandbox = require("./helpers/sandbox");
 const { validateInput } = require("./helpers/getSources");
-
-const DATA_PATH = "/data/live";
 
 const jsClose = document.getElementById("close");
 const jsShowProjects = document.getElementById("showProjects");
@@ -19,10 +22,9 @@ const initSetup = () => {
     jsNewProjects.addEventListener("click", toggleSetup);
     jsLaunchProjects.addEventListener("click", validateInput);
 
-    clearDir(remote.app.getAppPath() + DATA_PATH);
+    clearDir(CONFIG.REMOTE_APP + CONFIG.DATA_PATH);
     displayProjects(getList());
     displaySandbox();
-    // console.log(remote)
 };
 
 initSetup();

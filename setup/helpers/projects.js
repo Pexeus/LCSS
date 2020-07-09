@@ -1,17 +1,15 @@
+"use strict";
+
 const fs = require("fs");
-const remote = require("electron").remote;
 const { showError, createEditor } = require("./getSources");
+const CONFIG = require("./config");
 
 function saveProject() {
-    let url = "";
-    let files = "";
-    let path = "";
+    const urlInputVal = document.getElementById("urlInput").value;
+    const files = document.getElementById("direcoryInput").files;
 
-    url = document.getElementById("urlnput").value;
-    files = document.getElementById("direcoryInput").files;
-
-    if (files != undefined && url != undefined) {
-        path = files[0].path.replace(files[0].name, "");
+    if (files !== undefined && urlInputVal !== undefined) {
+        const path = files[0].path.replace(files[0].name, "");
 
         addList(path, url);
     } else {
@@ -21,27 +19,26 @@ function saveProject() {
 
 // Projekt zur projektliste hinzufügen
 function addList(path, url) {
-    let list = getList();
-    let project = { path: path, url: url };
+    const project = { path: path, url: url };
 
     console.log(project);
 
     console.log(JSON.stringify(list));
     console.log(project.url);
 
-    if (JSON.stringify(list).includes(project.path) == false) {
+    if (JSON.stringify(list).includes(project.path) === false) {
         list.push(project);
     } else {
         console.log("double");
     }
 
-    updateList(list);
+    updateList(getList());
 }
 
 // projektliste aktualisieren
 function updateList(list) {
     fs.writeFileSync(
-        remote.app.getAppPath() + "/data/config/projects.txt",
+        CONFIG.REMOTE_APP + CONFIG.DATA_PROJECTS,
         JSON.stringify(list),
     );
 }
@@ -49,11 +46,11 @@ function updateList(list) {
 // projektliste abrufen
 function getList() {
     let list = fs.readFileSync(
-        remote.app.getAppPath() + "/data/config/projects.txt",
+        CONFIG.REMOTE_APP + CONFIG.DATA_PROJECTS,
         "utf-8",
     );
 
-    if (list == "") {
+    if (list === "") {
         // toggleSetup() wegen sandbox
         list = [];
     } else {

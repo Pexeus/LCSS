@@ -44,7 +44,7 @@
         }
     },
     "lint-staged": {
-        "*.{js,css}": "npm run prettier"
+        "*.{js,css}": ["npm run prettier", "git add -A"]
     },
     "config": {
         "commitizen": {

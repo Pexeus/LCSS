@@ -1,34 +1,33 @@
+"use strict";
+
 const { ipcRenderer } = require("electron");
+const CONFIG = require("./config");
 const clearDir = require("./clear");
 
 function getDirectory() {
-    let path = "";
-
-    path = ipcRenderer.sendSync("requestPath", "");
+    return ipcRenderer.sendSync("requestPath", "");
 }
 
 function validateInput() {
-    let url = "";
-    let files;
-
-    url = document.getElementById("urlnput").value;
-    files = document.getElementById("direcoryInput").files;
+    let urlInputVal = document.getElementById("urlInput").value;
+    const files = document.getElementById("direcoryInput").files;
 
     if (files.length > 0) {
-        dir = files[0].path.replace(files[0].name, "");
-        if (url != "") {
-            url = url.replace(/ /g, "%20");
-            console.log("Path: " + dir + " | URL: " + url);
+        const dir = files[0].path.replace(files[0].name, "");
+
+        if (urlInputVal !== "") {
+            urlInputVal = urlInputVal.replace(/ /g, "%20");
+            console.log("Path: " + dir + " | URL: " + urlInputVal);
 
             saveProject();
-            createEditor(dir, url);
+            createEditor(dir, urlInputVal);
         } else {
-            url = "file:///" + files[0].path;
+            urlInputVal = "file:///" + files[0].path;
 
-            url = url.replace(/ /g, "%20");
+            urlInputVal = url.replace(/ /g, "%20");
 
-            addList(dir, url);
-            createEditor(dir, url);
+            addList(dir, urlInputVal);
+            createEditor(dir, urlInputVal);
         }
     } else {
         showError("Set a Project Directory");
@@ -63,10 +62,9 @@ function showError(msg) {
 }
 
 function createEditor(dir, url) {
-    clearDir(remote.app.getAppPath() + "/data/live/");
+    const editorConfig = { url: url, directory: dir };
 
-    editorConfig = { url: url, directory: dir };
-    console.log(editorConfig);
+    clearDir(CONFIG.REMOTE_APP + CONFIG.DATA_PATH);
     ipcRenderer.sendSync("createEditor", editorConfig);
 }
 
