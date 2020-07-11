@@ -106,6 +106,7 @@ function clearDropdownData() {
 
 //collect data from CSS object
 function collectDropdownData(data) {
+    resetDropdownData();
     entries = Object.keys(data);
 
     entries.forEach((entry) => {

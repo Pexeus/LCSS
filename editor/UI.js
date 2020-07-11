@@ -168,7 +168,6 @@ function slider(property, value, unit) {
         );
     };
 
-    console.log(unit);
     unitDisplay = unitInput(unit);
 
     unitDisplay.addEventListener("change", () => {
@@ -223,7 +222,6 @@ function unitInput(unit) {
 
         if (option == unit) {
             container.selected = true;
-            console.log("selected: " + options + " from: " + unit);
         }
     });
 
