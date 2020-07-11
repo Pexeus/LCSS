@@ -1,7 +1,5 @@
 //new dropdown data using text files
 
-added = 0;
-
 //query a dropdown list
 function getDropdownData(query) {
     const database = JSON.parse(
@@ -17,14 +15,10 @@ function getDropdownData(query) {
             properties[i].includes(query) ||
             query.includes(properties[i])
         ) {
-            console.log(
-                "match for " + query + " in " + database[properties[i]],
-            );
             return database[properties[i]];
         }
     }
 
-    console.log("no match for " + query + " in " + database);
     return false;
 }
 
@@ -116,8 +110,6 @@ function collectDropdownData(data) {
     entries.forEach((entry) => {
         searchTarget(data[entry]);
     });
-
-    console.log(added);
 }
 
 //search a target (#box or something) for dropdown data
@@ -140,8 +132,6 @@ function searchProperty(property, value) {
                 property.includes(dropdownProperty)
             ) {
                 addDropdownData(property, value);
-
-                added += 1;
             }
         });
     }

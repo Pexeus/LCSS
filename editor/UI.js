@@ -62,7 +62,6 @@ function dropdown(property, userValue, options) {
     dropdownContainer = createElement("div", "dropdownBox");
     selection = createElement("select", "dropdown");
 
-    console.log(options);
     options.forEach((option) => {
         container = createElement("option", "dropdownOption");
         container.text = option;
@@ -169,7 +168,8 @@ function slider(property, value, unit) {
         );
     };
 
-    unitDisplay = unitInput(value);
+    console.log(unit);
+    unitDisplay = unitInput(unit);
 
     unitDisplay.addEventListener("change", () => {
         createDataset(
@@ -213,8 +213,6 @@ function unitInput(unit) {
 
     options = getDropdownData("units");
 
-    console.log(options);
-
     selection = createElement("select", "unitInput");
 
     options.forEach((option) => {
@@ -225,6 +223,7 @@ function unitInput(unit) {
 
         if (option == unit) {
             container.selected = true;
+            console.log("selected: " + options + " from: " + unit);
         }
     });
 
