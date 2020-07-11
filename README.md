@@ -16,3 +16,4 @@
 | `npm run build`    | building project             |
 | `npm run lint:js`  | run eslint                   |
 | `npm run lint:fix` | run eslint with `--fix` flag |
+| `npm run buildInstaller` | create .msi Installer  |
