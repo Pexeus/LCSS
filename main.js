@@ -5,6 +5,7 @@ editorConfig = { directory: "", url: "" };
 function createSetup() {
     // fenster definieren
     setupWindow = new BrowserWindow({
+        icon: __dirname + "/icon.png",
         width: 280,
         height: 350,
         frame: false,
@@ -25,6 +26,7 @@ function createSetup() {
 
 function createEditor() {
     const editorWindow = new BrowserWindow({
+        icon: __dirname + "/icon.png",
         width: 900,
         height: 900,
         minHeight: 600,

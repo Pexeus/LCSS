@@ -107,7 +107,7 @@ function clearDropdownData() {
 //collect data from CSS object
 function collectDropdownData(data) {
     resetDropdownData();
-    entries = Object.keys(data);
+    const entries = Object.keys(data);
 
     entries.forEach((entry) => {
         searchTarget(data[entry]);
@@ -116,7 +116,7 @@ function collectDropdownData(data) {
 
 //search a target (#box or something) for dropdown data
 function searchTarget(properties) {
-    entries = Object.keys(properties);
+    const entries = Object.keys(properties);
 
     entries.forEach((entry) => {
         searchProperty(entry, properties[entry]);
