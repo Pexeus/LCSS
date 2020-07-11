@@ -20,6 +20,7 @@ function saveProject() {
 // Projekt zur projektliste hinzufügen
 function addList(path, url) {
     const project = { path: path, url: url };
+    let list = getList();
 
     console.log(project);
 
@@ -32,7 +33,7 @@ function addList(path, url) {
         console.log("double");
     }
 
-    updateList(getList());
+    updateList(list);
 }
 
 // projektliste aktualisieren
@@ -110,7 +111,6 @@ function projectBox(config) {
     });
 
     // sandbox hervorheben
-    console.log(config.path);
     if (config.path.includes("sandbox")) {
     }
 

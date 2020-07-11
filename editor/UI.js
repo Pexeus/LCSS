@@ -1,9 +1,3 @@
-// css property lists für dropdowns
-CSS_display = "inline block flex grid inline-block inherit";
-CSS_units = "px vh pt % em in mm cm pt pc";
-CSS_colors = "blue red black white yellow";
-CSS_align = "center left right top bottom";
-
 oldbox = false;
 
 function createInterface(container, property, values) {
@@ -45,10 +39,15 @@ function createInputs(property, rawValues) {
             letters = value.match(/[a-zA-Z-%]+/g);
             numbers = value.match(/\d+/g);
 
+            dropdownOptions = getDropdownData(rawValues);
+
             if (numbers != null) {
-                input = slider(property, numbers, letters);
-            } else if (checkDropdown(letters) == true) {
-                input = dropdown(property, letters);
+                numbersString = numbers.join();
+                number = parseFloat(numbersString.replace(/,/g, "."));
+
+                input = slider(property, number, letters);
+            } else if (dropdownOptions != false) {
+                input = dropdown(property, letters, dropdownOptions);
             } else {
                 input = universalInput(letters, property);
             }
@@ -59,22 +58,11 @@ function createInputs(property, rawValues) {
     return propertyContainer;
 }
 
-function dropdown(property, userValue) {
-    options = "";
-
+function dropdown(property, userValue, options) {
     dropdownContainer = createElement("div", "dropdownBox");
     selection = createElement("select", "dropdown");
 
-    // schauen in welcher liste der wert vorkommt
-    if (CSS_display.includes(userValue)) {
-        options = CSS_display.split(" ");
-    } else if (CSS_colors.includes(userValue)) {
-        options = CSS_colors.split(" ");
-    } else if (CSS_align.includes(userValue)) {
-        options = CSS_align.split(" ");
-    }
-
-    // dropdown optionen einfügen
+    console.log(options);
     options.forEach((option) => {
         container = createElement("option", "dropdownOption");
         container.text = option;
@@ -87,7 +75,6 @@ function dropdown(property, userValue) {
     });
 
     selection.oninput = function () {
-        // console.log(event.target.parentNode, property)
         createDataset(event.target, property);
     };
 
@@ -96,9 +83,9 @@ function dropdown(property, userValue) {
 }
 
 function checkDropdown(data) {
-    checklist = CSS_display + CSS_colors + CSS_align;
+    const checklist = dropdownChecklist();
 
-    if (checklist.includes(data)) {
+    if (getDropdownData(data) != false) {
         return true;
     } else {
         return false;
@@ -182,7 +169,7 @@ function slider(property, value, unit) {
         );
     };
 
-    unitDisplay = unitInput(unit);
+    unitDisplay = unitInput(value);
 
     unitDisplay.addEventListener("change", () => {
         createDataset(
@@ -220,7 +207,13 @@ function slider(property, value, unit) {
 }
 
 function unitInput(unit) {
-    options = CSS_units.split(" ");
+    if (unit == null) {
+        unit = " ";
+    }
+
+    options = getDropdownData("units");
+
+    console.log(options);
 
     selection = createElement("select", "unitInput");
 
@@ -229,8 +222,6 @@ function unitInput(unit) {
         container.text = option;
 
         selection.add(container, null);
-
-        // console.log(unit + " / " + option)
 
         if (option == unit) {
             container.selected = true;
@@ -256,12 +247,10 @@ function getRange(value, unit) {
         max = value * 4;
     }
 
-    if (min < 10) {
-        min = -10;
-    }
-
-    if (max < 10) {
-        max = max + 10;
+    if (unit != "s") {
+        if (max < 1) {
+            max = 20;
+        }
     }
 
     if (max > 500 && value < 500) {

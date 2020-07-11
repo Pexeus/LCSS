@@ -5,7 +5,12 @@ const remote = require("electron").remote;
 const CONFIG = require("./helpers/config");
 
 const clearDir = require("./helpers/clear");
-const { toggleSetup, displayProjects, getList } = require("./helpers/projects");
+const {
+    toggleSetup,
+    displayProjects,
+    getList,
+    addList,
+} = require("./helpers/projects");
 const displaySandbox = require("./helpers/sandbox");
 const { validateInput } = require("./helpers/getSources");
 

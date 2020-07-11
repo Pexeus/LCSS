@@ -23,6 +23,8 @@ body {
 
 .title-window {
   padding-left: 10px;
+  -webkit-app-region: drag;
+  cursor: default;
 }
 
 #frame {

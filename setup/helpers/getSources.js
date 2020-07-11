@@ -22,9 +22,9 @@ function validateInput() {
             saveProject();
             createEditor(dir, urlInputVal);
         } else {
-            urlInputVal = "file:///" + files[0].path;
+            urlInputVal = "file:///" + dir + determineStart(files);
 
-            urlInputVal = url.replace(/ /g, "%20");
+            urlInputVal = urlInputVal.replace(/ /g, "%20");
 
             addList(dir, urlInputVal);
             createEditor(dir, urlInputVal);
@@ -35,22 +35,20 @@ function validateInput() {
 }
 
 function determineStart(files) {
+    console.log(files);
     let value = "";
 
     for (let i = 0; i < files.length; i++) {
         if (files[i].name.includes("index")) {
             value = files[i].name;
+
+            return value;
         }
     }
 
-    if (value === "") {
-        for (let i = 0; i < files.length; i++) {
-            if (
-                files[i].name.includes(".php") ||
-                files[i].name.includes(".html")
-            ) {
-                value = files[i].name;
-            }
+    for (let i = 0; i < files.length; i++) {
+        if (files[i].name.includes(".php") || files[i].name.includes(".html")) {
+            value = files[i].name;
         }
     }
 

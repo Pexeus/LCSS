@@ -126,6 +126,7 @@ function getObject(file) {
                             .getElementById("editors")
                             .appendChild(fileContainer);
 
+                        collectDropdownData(data[entry]);
                         loopTargets(entry, data[entry], fileContainer);
                     }
                 });
