@@ -5,7 +5,8 @@
     "main": "main.js",
     "scripts": {
         "start": "electron main.js",
-        "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator --icon=icon.png",
+        "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator",
+        "buildInstaller": "node build_installer.js",
         "prettier": "./node_modules/.bin/prettier --write .",
         "lint:js": "./node_modules/.bin/eslint .",
         "lint:fix": "./node_modules/.bin/eslint . --fix"

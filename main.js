@@ -47,8 +47,8 @@ function createEditor() {
 
     // status vom preview empfangen und an editor senden
     ipcMain.on("previewStatus", (event, filesList) => {
-        console.log("Current Files:");
-        console.log(filesList);
+        //console.log("Current Files:");
+        //console.log(filesList);
         event.returnValue = "OK";
 
         editorWindow.webContents.send("currentlyLoaded", filesList);

@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
@@ -34,7 +35,7 @@ body {
 }
 
 #box h1 {
-  color: gray;
+  color: black;
   margin-bottom: 13px;
 }
 
