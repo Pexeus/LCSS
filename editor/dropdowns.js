@@ -75,6 +75,7 @@ function resetDropdownData() {
             "pt",
             "pc",
             "s",
+            "ms",
             " ",
         ],
         colors: ["blue", "red", "black", "white", "yellow"],
