@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./icon.png" alt="icon" height="256" width="256">
+  <img src="./icon.ico" alt="icon" height="256" width="256">
   <h1>LCSS</h1>
 </div>
 
