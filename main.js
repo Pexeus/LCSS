@@ -1,11 +1,15 @@
-const { ipcMain, dialog, app, BrowserWindow } = require("electron");
+"use strict";
 
-editorConfig = { directory: "", url: "" };
+const path = require("path");
+const { ipcMain, app, BrowserWindow } = require("electron");
+
+let editorConfig = { directory: "", url: "" };
+let setupWindow;
 
 function createSetup() {
     // fenster definieren
     setupWindow = new BrowserWindow({
-        icon: __dirname + "/icon.png",
+        icon: path.join(__dirname, "/icon.png"),
         width: 280,
         height: 350,
         frame: false,
@@ -26,7 +30,7 @@ function createSetup() {
 
 function createEditor() {
     const editorWindow = new BrowserWindow({
-        icon: __dirname + "/icon.png",
+        icon: path.join(__dirname, "/icon.png"),
         width: 900,
         height: 900,
         minHeight: 600,
@@ -49,8 +53,8 @@ function createEditor() {
 
     // status vom preview empfangen und an editor senden
     ipcMain.on("previewStatus", (event, filesList) => {
-        //console.log("Current Files:");
-        //console.log(filesList);
+        // console.log("Current Files:");
+        // console.log(filesList);
         event.returnValue = "OK";
 
         editorWindow.webContents.send("currentlyLoaded", filesList);

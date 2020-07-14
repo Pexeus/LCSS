@@ -11,7 +11,7 @@ function saveProject() {
     if (files !== undefined && urlInputVal !== undefined) {
         const path = files[0].path.replace(files[0].name, "");
 
-        addList(path, url);
+        addList(path, urlInputVal);
     } else {
         showError("Set Path and URL");
     }
@@ -20,7 +20,7 @@ function saveProject() {
 // Projekt zur projektliste hinzufügen
 function addList(path, url) {
     const project = { path: path, url: url };
-    let list = getList();
+    const list = getList();
 
     console.log(project);
 
@@ -97,12 +97,12 @@ function projectBox(config) {
     box.appendChild(urlText);
     box.appendChild(pathText);
 
-    box.addEventListener("click", function () {
+    box.addEventListener("click", function (event) {
         const pURL = document.getElementById("pURL").innerHTML;
         const pPath = document.getElementById("pPath").innerHTML;
         let target = event.target;
 
-        if (target.tagName != "div") {
+        if (target.tagName !== "div") {
             target = target.parentElement;
         }
 
@@ -118,7 +118,7 @@ function projectBox(config) {
 }
 
 function toggleSetup() {
-    if (document.getElementById("showSelection").style.display != "none") {
+    if (document.getElementById("showSelection").style.display !== "none") {
         document.getElementById("selection").style.display = "inline-block";
         document.getElementById("under").style.display = "block";
         document.getElementById("showProjects").style.display = "inline-block";

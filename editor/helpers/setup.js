@@ -24,7 +24,7 @@ function devTools() {
 }
 
 function quickAccess(file) {
-    if (path.extname(file) == ".html" || path.extname(file) == ".php") {
+    if (path.extname(file) === ".html" || path.extname(file) === ".php") {
         // console.log("Adding to quickbar: " + file)
 
         container = document.getElementById("filesList");
@@ -67,7 +67,7 @@ function QASetActive(btn) {
     files = document.getElementById("filesList").childNodes;
 
     for (var i = 0; i < files.length; i++) {
-        if (files[i].id == "fileSelector") {
+        if (files[i].id === "fileSelector") {
             files[i].classList.remove("activeButton");
         }
     }
@@ -81,7 +81,7 @@ function openWorkspace(config) {
         fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
     );
 
-    if (options.openDirectory == true) {
+    if (options.openDirectory === true) {
         openExplorer(config.directory, (err) => {
             if (err) {
                 console.log(err);
@@ -96,7 +96,7 @@ function openCode(config) {
         fs.readFileSync(appPath + "/data/config/options.txt", "utf-8"),
     );
 
-    if (options.openCode == true) {
+    if (options.openCode === true) {
         executeCommand("code " + config.directory);
     }
 }

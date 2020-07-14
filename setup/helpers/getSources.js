@@ -3,6 +3,7 @@
 const { ipcRenderer } = require("electron");
 const CONFIG = require("./config");
 const clearDir = require("./clear");
+const { saveProject, addList } = require("./projects");
 
 function getDirectory() {
     return ipcRenderer.sendSync("requestPath", "");

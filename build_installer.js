@@ -9,7 +9,7 @@ const fs = require("fs");
 const rimraf = require("rimraf");
 const { create } = require("domain");
 
-function package(installer) {
+function packageInstaller(installer) {
     const outputDir = "./LiveCSS-win32-x64";
 
     if (fs.existsSync(outputDir)) {
@@ -79,8 +79,8 @@ readline.question(`"i" for installer, "p" for package:`, (input) => {
     readline.close();
 
     if (input.toLowerCase() == "i") {
-        package(true);
+        packageInstaller(true);
     } else {
-        package(false);
+        packageInstaller(false);
     }
 });
