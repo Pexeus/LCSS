@@ -15,7 +15,7 @@ fs.watch(config.directory, (eventType, file) => {
     console.log("Change in workspace: " + file);
     getObject(file);
 
-    if (path.extname(file) == ".css") {
+    if (path.extname(file) === ".css") {
         live = appPath + "/data/live/" + file;
         file = config.directory + file;
 
@@ -62,7 +62,7 @@ function saveChanges() {
 }
 
 function moveLive(file) {
-    if (path.extname(file) == ".css") {
+    if (path.extname(file) === ".css") {
         live = appPath + "/data/live/" + file;
         file = config.directory + file;
 

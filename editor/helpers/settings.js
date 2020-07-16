@@ -3,12 +3,12 @@ const { shell } = require("electron");
 
 // settings ein/ausblenden
 function toggleSettings() {
-    win = document.getElementById("windowManager");
+    const win = document.getElementById("windowManager");
 
-    if (win.style.display == "block") {
+    if (win.style.display === "block") {
         if (
-            event.target.id == "windowManager" ||
-            event.target.id == "headButton"
+            event.target.id === "windowManager" ||
+            event.target.id === "headButton"
         ) {
             console.log("Settings: Closed");
             win.style.display = "none";
@@ -21,27 +21,27 @@ function toggleSettings() {
 
 // files in settings mit status anzeigen
 function addFileStatus(file, type) {
-    if (document.getElementById("Status" + file) != undefined) {
+    if (document.getElementById("Status" + file) !== undefined) {
         console.log("removing: " + file);
         document.getElementById("Status" + file).remove();
     }
 
     console.log("updating: " + file + " type: " + type);
 
-    target = document.getElementById("fileStatusContainer");
+    const target = document.getElementById("fileStatusContainer");
 
-    container = createElement("div", "Status" + file);
+    const container = createElement("div", "Status" + file);
 
-    icon = createElement("img", "fileIcon");
+    const icon = createElement("img", "fileIcon");
     icon.src = appPath + "/data/img/css.png";
 
-    fileName = createElement("p", "fileName");
+    const fileName = createElement("p", "fileName");
     fileName.innerHTML = file;
 
-    if (type == "operational") {
+    if (type === "operational") {
         container.classList.add("StatusContainer_operational");
     }
-    if (type == "live") {
+    if (type === "live") {
         container.classList.add("StatusContainer_live");
     }
 
@@ -57,10 +57,10 @@ function resetFileStatus() {
 
 // projekt url/path anzeigen
 function setProjectStatus() {
-    container = document.getElementById("projectStatusContainer");
+    const container = document.getElementById("projectStatusContainer");
 
-    url = createElement("p", "URLStatus");
-    dir = createElement("p", "PathStatus");
+    const url = createElement("p", "URLStatus");
+    const dir = createElement("p", "PathStatus");
 
     url.innerHTML = "URL: " + config.url;
     dir.innerHTML = "Workspace: " + config.directory;
@@ -71,7 +71,7 @@ function setProjectStatus() {
 
 // standard optionen-objekt erstellen
 function defaultOptions() {
-    options = {
+    const options = {
         menuPosition: "left",
         menuMode: "default",
         devTools: false,
@@ -95,14 +95,17 @@ function updateOptions(options) {
 
 // optionen abrufen
 function getOptions() {
-    string = fs.readFileSync(appPath + "/data/config/options.txt", "utf-8");
+    const string = fs.readFileSync(
+        appPath + "/data/config/options.txt",
+        "utf-8",
+    );
 
     return JSON.parse(string);
 }
 
 // optionen mit den daten aus dem UI updaten
 function setOptions() {
-    currentOptions = getOptions();
+    const currentOptions = getOptions();
 
     // editor stuff
     currentOptions.menuPosition = document
@@ -114,7 +117,7 @@ function setOptions() {
 
     // devTools anzeigen ja/ne
     if (
-        document.getElementsByClassName("config_pDevTools")[0].value ==
+        document.getElementsByClassName("config_pDevTools")[0].value ===
         "Show per Default"
     ) {
         currentOptions.devTools = true;
@@ -123,14 +126,16 @@ function setOptions() {
     }
 
     // explorer öffnen ja/ne
-    if (document.getElementsByClassName("config_sExplorer")[0].value == "Yes") {
+    if (
+        document.getElementsByClassName("config_sExplorer")[0].value === "Yes"
+    ) {
         currentOptions.openDirectory = true;
     } else {
         currentOptions.openDirectory = false;
     }
 
     // code öffnen ja/ne
-    if (document.getElementsByClassName("config_sCode")[0].value == "Yes") {
+    if (document.getElementsByClassName("config_sCode")[0].value === "Yes") {
         currentOptions.openCode = true;
     } else {
         currentOptions.openCode = false;
@@ -143,39 +148,39 @@ function setOptions() {
 
 // UI mit abgespiecherten optionen abgleichen
 function loadOptions() {
-    currentOptions = getOptions();
+    const currentOptions = getOptions();
 
-    ePos = document.getElementsByClassName("config_ePos")[0];
-    eSize = document.getElementsByClassName("config_eSize")[0];
-    pDevTools = document.getElementsByClassName("config_pDevTools")[0];
-    sExplorer = document.getElementsByClassName("config_sExplorer")[0];
-    sCode = document.getElementsByClassName("config_sCode")[0];
+    const ePos = document.getElementsByClassName("config_ePos")[0];
+    const eSize = document.getElementsByClassName("config_eSize")[0];
+    const pDevTools = document.getElementsByClassName("config_pDevTools")[0];
+    const sExplorer = document.getElementsByClassName("config_sExplorer")[0];
+    const sCode = document.getElementsByClassName("config_sCode")[0];
 
     // Menu position
-    if (currentOptions.menuPosition == "left") {
+    if (currentOptions.menuPosition === "left") {
         ePos.options[1].selected = "selected";
     } else {
         ePos.options[0].selected = "selected";
     }
 
     // Menu mode
-    for (i = 0; i < eSize.options.length; i++) {
+    for (let i = 0; i < eSize.options.length; i++) {
         if (
-            eSize.options[i].innerHTML.toLowerCase() == currentOptions.menuMode
+            eSize.options[i].innerHTML.toLowerCase() === currentOptions.menuMode
         ) {
             eSize.options[i].selected = "selected";
         }
     }
 
     // devtools
-    if (currentOptions.devTools == false) {
+    if (currentOptions.devTools === false) {
         pDevTools.options[1].selected = "selected";
     } else {
         pDevTools.options[0].selected = "selected";
     }
 
     // explorer
-    if (currentOptions.openDirectory == false) {
+    if (currentOptions.openDirectory === false) {
         sExplorer.options[1].selected = "selected";
     } else {
         pDevTools.options[0].selected = "selected";
@@ -183,7 +188,7 @@ function loadOptions() {
 
     // code
     // explorer
-    if (currentOptions.openCode == false) {
+    if (currentOptions.openCode === false) {
         sCode.options[1].selected = "selected";
     } else {
         sCode.options[0].selected = "selected";
@@ -191,13 +196,13 @@ function loadOptions() {
 }
 
 function executeOptions() {
-    currentOptions = getOptions();
+    const currentOptions = getOptions();
 
-    editor = document.getElementById("menu");
-    preview = document.getElementById("preview");
+    const editor = document.getElementById("menu");
+    const preview = document.getElementById("preview");
 
     // menu position
-    if (currentOptions.menuPosition == "left") {
+    if (currentOptions.menuPosition === "left") {
         // neu
         preview.style.right = 0;
         editor.style.left = 0;
@@ -216,21 +221,21 @@ function executeOptions() {
     }
 
     // menu grösse
-    if (currentOptions.menuMode == "normal") {
+    if (currentOptions.menuMode === "normal") {
         menu.style.width = "330px";
         preview.style.width = "calc(100% - 330px)";
     }
-    if (currentOptions.menuMode == "large") {
+    if (currentOptions.menuMode === "large") {
         menu.style.width = "50%";
         preview.style.width = "50%";
     }
-    if (currentOptions.menuMode == "hidden") {
+    if (currentOptions.menuMode === "hidden") {
         menu.style.width = "0px";
         preview.style.width = "100%";
     }
 
     // devtools
-    if (currentOptions.devTools == true) {
+    if (currentOptions.devTools === true) {
         setTimeout(function () {
             devTools();
         }, 200);
@@ -271,7 +276,7 @@ function clearDir(directory) {
 
 // sandbox template öffnen
 function showSandboxTemplate() {
-    template = path.join(__dirname, "..", "\\data\\sandboxTemplate");
+    const template = path.join(__dirname, "..", "\\data\\sandboxTemplate");
 
     openExplorer(template, (err) => {
         if (err) {
@@ -281,7 +286,9 @@ function showSandboxTemplate() {
 }
 
 function openLink() {
-    if (event.target.tagName != "div") {
+    let url;
+
+    if (event.target.tagName !== "div") {
         url = event.target.parentElement.id;
     } else {
         url = event.target.id;
