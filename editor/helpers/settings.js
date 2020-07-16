@@ -21,8 +21,7 @@ function toggleSettings() {
 
 // files in settings mit status anzeigen
 function addFileStatus(file, type) {
-    if (document.getElementById("Status" + file) !== undefined) {
-        console.log("removing: " + file);
+    if (document.getElementById("Status" + file) !== null) {
         document.getElementById("Status" + file).remove();
     }
 
