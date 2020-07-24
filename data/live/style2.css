@@ -1,0 +1,14 @@
+body {
+  text-align: center;
+  background-color: rgb(248, 248, 248);
+}
+
+#centeredBox {
+  height: 33vh;
+  display: inline-block;
+  margin-top: 33vh;
+  box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.459);
+  width: 33%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+}

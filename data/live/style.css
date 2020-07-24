@@ -16,8 +16,8 @@ body {
 
 #box {
   display: inline-block;
-  width: 400px;
-  margin: 16px;
+  width: 81%;
+  margin-top: 18px;
   padding: 25px;
   border-radius: 5px;
   background-color: #f8f5ff;
@@ -32,6 +32,7 @@ body {
 #box:hover {
   padding: 45px;
   opacity: 1;
+  max-width: 98%;
 }
 
 #box h1 {
@@ -43,7 +44,7 @@ body {
   color: #160046;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 800px) {
   body {
     background-color: rgb(53, 53, 53);
   }
@@ -53,6 +54,15 @@ body {
     border-radius: 0px;
     box-shadow: 0px 0px 10px rgb(31, 31, 31);
     opacity: 1;
+    max-width: 300px;
+    margin: 12px;
+  }
+
+  #box:hover {
+    padding: 45px;
+    margin: 0px;
+    opacity: 1;
+    max-width: 320px;
   }
 
   #box h1 {

@@ -20,7 +20,9 @@ function packageInstaller(installer) {
         });
     }
 
-    exec(`npm run build`, (error, stdout, stderr) => {
+    console.log("packaging...");
+
+    exec(`npm run package`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
         }
@@ -29,7 +31,7 @@ function packageInstaller(installer) {
         }
         console.log(`stdout: ${stdout}`);
 
-        console.log("Packaging finished");
+        console.log("packaging finished");
 
         if (installer == true) {
             createInstaller();
@@ -72,9 +74,7 @@ function createInstaller() {
     });
 }
 
-console.log(
-    "Do you want to package or create an installer? (default: package)",
-);
+console.log("Just package or create installer as well? (default: package)");
 readline.question(`"i" for installer, "p" for package:`, (input) => {
     readline.close();
 

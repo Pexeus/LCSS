@@ -316,6 +316,15 @@ document.getElementById("min").addEventListener("click", function (e) {
     window.minimize();
 });
 
+document.getElementById("max").addEventListener("click", function (e) {
+    var window = remote.getCurrentWindow();
+    if (window.isMaximized()) {
+        window.restore();
+    } else {
+        window.maximize();
+    }
+});
+
 document.getElementById("close").addEventListener("click", function (e) {
     var window = remote.getCurrentWindow();
     window.close();

@@ -9,8 +9,9 @@
   text-align: center;
   padding-top: 20px;
   overflow: scroll;
-  background-color: rgba(167, 167, 167, 0.185);
+  background-color: rgba(99, 99, 99, 0.76);
   cursor: pointer;
+  opacity: 0;
 }
 
 #settings {
@@ -22,11 +23,12 @@
   top: 100px;
   z-index: 5000;
   transition: all ease-in-out 0.2s;
+  transition: margin-top 0.3s ease-in-out;
   text-align: center;
   padding-top: 20px;
   overflow: scroll;
   border-radius: 2.5px;
-  box-shadow: 0px 0px 30px rgb(110, 110, 110);
+  margin-top: 100%;
 }
 
 #statusDisplay {

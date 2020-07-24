@@ -1,9 +1,11 @@
 config = ipcRenderer.sendSync("requestConfig", "");
 const { shell } = require("electron");
+const { doc } = require("prettier");
 
 // settings ein/ausblenden
 function toggleSettings() {
     const win = document.getElementById("windowManager");
+    const settings = document.getElementById("settings");
 
     if (win.style.display === "block") {
         if (
@@ -11,11 +13,21 @@ function toggleSettings() {
             event.target.id === "headButton"
         ) {
             console.log("Settings: Closed");
-            win.style.display = "none";
+            settings.style.marginTop = "100%";
+            win.style.opacity = 0;
+
+            setTimeout(() => {
+                win.style.display = "none";
+            }, 300);
         }
     } else {
         console.log("Settings: Open");
         win.style.display = "block";
+
+        setTimeout(() => {
+            win.style.opacity = 1;
+            settings.style.marginTop = "0px";
+        }, 10);
     }
 }
 
@@ -251,7 +263,6 @@ function resetSandbox() {
         if (err) {
             console.log(err);
         }
-        console.log(file + " [COPY] " + live);
     });
 
     console.log("Resetted Sandbox");
@@ -266,7 +277,7 @@ function clearDir(directory) {
         console.log("clearing: " + directory);
         for (const file of files) {
             console.log("removing: " + file);
-            fs.unlink(pathModule.join(directory, file), (err) => {
+            fs.unlink(path.join(directory, file), (err) => {
                 if (err) throw err;
             });
         }

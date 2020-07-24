@@ -5,8 +5,8 @@
     "main": "main.js",
     "scripts": {
         "start": "electron main.js",
-        "build": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator",
-        "buildInstaller": "node build_installer.js",
+        "package": "electron-packager ./ /LiveCSS --win32metadata.requested-execution-level=requireAdministrator",
+        "build": "node build.js",
         "prettier": "./node_modules/.bin/prettier --write .",
         "lint:js": "./node_modules/.bin/eslint .",
         "lint:fix": "./node_modules/.bin/eslint . --fix"
@@ -45,7 +45,10 @@
         }
     },
     "lint-staged": {
-        "*.{js,css}": ["npm run prettier", "git add -A"]
+        "*.{js,css}": [
+            "npm run prettier",
+            "git add -A"
+        ]
     },
     "config": {
         "commitizen": {

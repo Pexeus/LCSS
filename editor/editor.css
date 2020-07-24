@@ -79,18 +79,19 @@ body {
 }
 
 #windowMenu img {
-  height: 15px;
-  padding: 8px;
+  height: 12px;
+  padding: 11px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: 0px;
   cursor: pointer;
   filter: invert(0.4);
+  transition: 0.1s ease-in-out;
 }
 
 #windowMenu img:hover {
   filter: invert(1);
-  background-color: #6363636b;
+  background-color: #a1662e;
 }
 
 #windowMenu #close:hover {

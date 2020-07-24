@@ -37,7 +37,7 @@ function createEditor() {
         minWidth: 600,
         frame: false,
         hasShadow: false,
-        transparent: true,
+        transparent: false,
         webPreferences: {
             nodeIntegration: true,
             webviewTag: true,
