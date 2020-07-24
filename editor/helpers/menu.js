@@ -97,6 +97,8 @@ function getObject(file) {
                 addFileStatus(file, "live");
             }
 
+            data[file] = fixCssToObject(data[file]);
+
             if (data[file] != undefined) {
                 updateFile(file, data);
                 // console.log(data)
@@ -344,4 +346,49 @@ function insertExtracted(file) {
     });
 
     return result;
+}
+
+//fixing some stuff on the generated object
+function fixCssToObject(object) {
+    object = removeWebkits(object);
+
+    return object;
+}
+
+//removing webkit/moz entries
+function removeWebkits(object) {
+    targets = Object.keys(object);
+
+    targets.forEach((target) => {
+        object[target] = fixTargetWebkit(object[target]);
+    });
+
+    return object;
+}
+
+function fixTargetWebkit(target) {
+    properties = Object.keys(target);
+
+    properties.forEach((property) => {
+        if (typeof property == "string") {
+            if (checkWebkit(property) == true) {
+                console.log("removed: " + property);
+                delete target[property];
+                console.log(target);
+            }
+        } else {
+            fixTargetWebkit(property);
+        }
+    });
+
+    console.log(target);
+    return target;
+}
+
+function checkWebkit(property) {
+    if (property.includes("-webkit") || property.includes("-moz")) {
+        return true;
+    } else {
+        return false;
+    }
 }
