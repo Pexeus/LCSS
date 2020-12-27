@@ -7,6 +7,10 @@
 
 ![demo](demo.gif?raw=true)
 
+## Download
+
+https://verion.ch/livecss
+
 ## Development
 
 | Scripts            | Info                         |
