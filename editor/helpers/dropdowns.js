@@ -7,6 +7,7 @@ function getDropdownData(query) {
     );
 
     const properties = Object.keys(database);
+    let i;
 
     for (i = 0; i < properties.length; i++) {
         if (
@@ -29,10 +30,11 @@ function addDropdownData(query, value) {
     );
 
     const properties = Object.keys(database);
+    let i;
 
     for (i = 0; i < properties.length; i++) {
         if (query.includes(properties[i]) || properties[i].includes(query)) {
-            if (database[properties[i]].includes(value) == false) {
+            if (database[properties[i]].includes(value) === false) {
                 database[properties[i]].push(value);
             }
         }
