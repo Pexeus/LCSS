@@ -16,7 +16,7 @@
     "dependencies": {
         "chokidar": "^3.4.0",
         "css-to-object": "^1.1.0",
-        "electron": "^9.0.5",
+        "electron": "^18.3.7",
         "ncp": "^2.0.0",
         "open-file-explorer": "^1.0.2",
         "rimraf": "^3.0.2"
